@@ -2,3 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
+
+@font-face {
+  font-family: "LogoFont";
+  src: url("/fonts/REFOLLE.otf") format("truetype");
+  /* Add additional src lines if you have different font file formats */
+  /* src: url('/fonts/myfont.woff') format('woff'); */
+  /* src: url('/fonts/myfont.otf') format('opentype'); */
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  list-style: none;
+  font-family: 'Assistant', sans-serif;
+  background: #fff;
+}
+
+.logo-span {
+  font-family: 'LogoFont';
+}
+
+
