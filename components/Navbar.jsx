@@ -1,3 +1,5 @@
+
+
 import Link from 'next/link'
 import React from 'react';
 import {
@@ -7,50 +9,61 @@ import {
     AiFillHeart,
 } from 'react-icons/ai';
 
-const Navbar = () => {
+
+const navbar = () => {
     return (
-        <nav>
-            <h1>
-                ICCY
-            </h1>
+        <>
+            <nav className='mx-auto max-w-6xl px-2 pt-4 pb-4 grid grid-cols-2'>
+                <div className='flex items-center space-x-20'>
+                    <h1 className='logo-span text-2xl'>
+                        Iccy Store
+                    </h1>
 
-            <ul>
-                <li>
-                    <Link href="#">
-                        Home
-                    </Link>
-                </li>
+                    <ul className='flex items-center space-x-2 justify-between text-sm'>
+                        <li>
+                            <Link href="#">
+                                Home
+                            </Link>
+                        </li>
 
-                <li>
-                    <Link href="#">
-                        Shop
-                    </Link>
-                </li>
+                        <li>
+                            <Link href="#">
+                                Shop
+                            </Link>
+                        </li>
 
-                <li>
-                    <Link href="#">
-                        About
-                    </Link>
-                </li>
-            </ul>
+                        <li>
+                            <Link href="#">
+                                About
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
 
-            <div>
-                <ul>
-                    <li>
-                        <Link href="#">
-                            <FaShoppingCart />
-                        </Link>
-                    </li>
+                <div className='flex justify-end'>
+                    <ul className='flex items-center space-x-10'>
+                        <li className='relative'>
+                            <p className='absolute -top-2 -right-2 text-xs'>
+                                1
+                            </p>
+                            <Link href="#">
+                                <FaShoppingCart className='w-5 h-5'/>
+                            </Link>
+                        </li>
 
-                    <li>
-                        <Link href="#">
-                            <AiFillHeart />
-                        </Link>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                        <li className='relative'>
+                            <p className='absolute -top-2 -right-2 text-xs'>
+                                1
+                            </p>
+                            <Link href="#">
+                                <AiFillHeart className='w-5 h-5'/>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </>
     )
 }
 
-export default Navbar
+export default navbar

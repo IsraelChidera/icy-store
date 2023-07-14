@@ -1,9 +1,11 @@
-import Navbar from "@/components/navbar";
+import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <main className="k">
+    <main className="">
       <Navbar />
+      <Hero />
     </main>
   );
 }
