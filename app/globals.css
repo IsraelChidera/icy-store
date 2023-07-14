@@ -40,3 +40,33 @@ body {
   background-size: cover;
   height: 100vh;
 }
+
+.collection-one {
+  background: url("../public/images/collectionOne.svg");
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+
+.collection-two {
+  background: url("../public/images/collectionTwo.svg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+.collection-three {
+  background: url("../public/images/collectionThree.svg");
+  background-size: cover;
+  background-position: center;
+  height: 242px;
+  width: 239px;
+}
+
+.collection-four {
+  background: url("../public/images/collectionFour.svg");
+  background-size: cover;
+  background-position: center;
+  height: 242px;
+  width: 239px;
+}
