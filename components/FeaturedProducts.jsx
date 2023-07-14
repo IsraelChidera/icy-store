@@ -22,10 +22,145 @@ const FeaturedProducts = () => {
             </div>
 
             <div className='mt-14 mx-auto max-w-6xl'>
-                <div className='md:grid grid-cols-4 gap-x-2'>
+                <div className='md:grid grid-cols-4 gap-x-2 gap-y-10'>
                     <div>
                         <Image
                             src={productOne}
+                            alt="picture of a projec"
+                        />
+                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
+                        <p className='text-xs' style={{ color: "#121212" }}>
+                            $195.00 CAD
+                        </p>
+                    </div>
+
+                    <div>
+                        <Image
+                            src={productTwo}
+                            alt="picture of a projec"
+                        />
+                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Bo Soft Strap</p>
+                        <p className='text-xs' style={{ color: "#121212" }}>
+                            $365.00 CAD
+                        </p>
+                    </div>
+
+                    <div>
+                        <Image
+                            src={productThree}
+                            alt="picture of a projec"
+                        />
+                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
+                        <p className='text-xs' style={{ color: "#121212" }}>
+                            $195.00 CAD
+                        </p>
+                    </div>
+
+                    <div>
+                        <Image
+                            src={productFour}
+                            alt="picture of a projec"
+                        />
+                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
+                        <p className='text-xs' style={{ color: "#121212" }}>
+                            $195.00 CAD
+                        </p>
+                    </div>
+
+                    <div>
+                        <Image
+                            src={productFive}
+                            alt="picture of a projec"
+                        />
+                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
+                        <p className='text-xs flex items-center space-x-2' style={{ color: "#121212" }}>
+                            <span style={{ fontSize: "11px" }} className='line-through'>
+                                $545.00 CAD
+                            </span>
+
+                            <span>
+                                $195.00 CAD
+                            </span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <Image
+                            src={productSix}
+                            alt="picture of a projec"
+                        />
+                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Bo Soft Strap</p>
+                        <p className='text-xs' style={{ color: "#121212" }}>
+                            $365.00 CAD
+                        </p>
+                    </div>
+
+                    <div>
+                        <Image
+                            src={productSeven}
+                            alt="picture of a projec"
+                        />
+                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Bo Soft Strap</p>
+                        <p className='text-xs flex items-center space-x-2' style={{ color: "#121212" }}>
+                            <span style={{ fontSize: "11px" }} className='line-through'>
+                                $545.00 CAD
+                            </span>
+
+                            <span>
+                                $195.00 CAD
+                            </span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <Image
+                            src={productEight}
+                            alt="picture of a projec"
+                        />
+                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Storml </p>
+                        <p className='text-xs ' style={{ color: "#121212" }}>
+                            <span>
+                                $195.00 CAD
+                            </span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <Image
+                            src={productNine}
+                            alt="picture of a projec"
+                        />
+                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
+                        <p className='text-xs' style={{ color: "#121212" }}>
+                            $195.00 CAD
+                        </p>
+                    </div>
+
+                    <div>
+                        <Image
+                            src={productOne}
+                            alt="picture of a projec"
+                        />
+                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
+                        <p className='text-xs' style={{ color: "#121212" }}>
+                            $195.00 CAD
+                        </p>
+                    </div>
+
+                    <div>
+                        <Image
+                            src={productTwo}
+                            alt="picture of a projec"
+                        />
+                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Bo Soft Strap</p>
+                        <p className='text-xs' style={{ color: "#121212" }}>
+                            $365.00 CAD
+                        </p>
+                    </div>
+
+                    <div>
+                        <Image
+                            src={productThree}
                             alt="picture of a projec"
                         />
                         <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
