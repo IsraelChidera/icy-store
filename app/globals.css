@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap");
 
 @font-face {
   font-family: "LogoFont";
@@ -18,14 +18,25 @@
   margin: 0;
 }
 
+body,
+html {
+  height: 100%;
+}
+
 body {
   list-style: none;
-  font-family: 'Assistant', sans-serif;
+  font-family: "Assistant", sans-serif;
   background: #fff;
 }
 
 .logo-span {
-  font-family: 'LogoFont';
+  font-family: "LogoFont";
 }
 
-
+.hero-wrapper {
+  background: url("../public/images/hero-bg.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+}
