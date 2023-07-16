@@ -9,6 +9,7 @@ import productSix from '../public/images/productSix.svg';
 import productSeven from '../public/images/productSeven.svg';
 import productEight from '../public/images/productEight.svg';
 import productNine from '../public/images/productNine.svg';
+import Link from 'next/link';
 const FeaturedProducts = () => {
     return (
         <section className='mt-20 pb-10'>
@@ -23,7 +24,7 @@ const FeaturedProducts = () => {
 
             <div className='mt-14 mx-auto max-w-6xl'>
                 <div className='md:grid grid-cols-4 gap-x-2 gap-y-10'>
-                    <div>
+                    <Link href="/product">
                         <Image
                             src={productOne}
                             alt="picture of a projec"
@@ -32,7 +33,7 @@ const FeaturedProducts = () => {
                         <p className='text-xs' style={{ color: "#121212" }}>
                             $195.00 CAD
                         </p>
-                    </div>
+                    </Link>
 
                     <div>
                         <Image

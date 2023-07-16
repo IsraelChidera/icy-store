@@ -15,13 +15,13 @@ const navbar = () => {
         <>
             <nav className='mx-auto max-w-6xl px-2 pt-4 pb-4 grid grid-cols-2'>
                 <div className='flex items-center space-x-20'>
-                    <h1 className='logo-span text-2xl'>
+                    <Link href="/" className='logo-span text-2xl'>
                         Iccy Store
-                    </h1>
+                    </Link>
 
                     <ul className='flex items-center space-x-2 justify-between text-sm'>
                         <li>
-                            <Link href="#">
+                            <Link href="/">
                                 Home
                             </Link>
                         </li>
