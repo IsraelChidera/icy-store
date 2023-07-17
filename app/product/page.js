@@ -6,7 +6,7 @@ import productFive from '../../public/images/productFive.svg';
 import productSix from '../../public/images/productSix.svg';
 import productSeven from '../../public/images/productSeven.svg';
 import productEight from '../../public/images/productEight.svg';
-import productNine from '../../public/images/productNine.svg';
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -77,10 +77,10 @@ const page = () => {
             </div>
 
             <div className="mt-3 space-y-2">
-              <div>
-                <button className="text-sm py-2 px-4 w-full border border-black">
+              <div className="flex text-center w-full">
+                <Link href="/cart" className="text-sm py-2 px-4 w-full border border-black">
                   Add to cart
-                </button>
+                </Link>
               </div>
 
               <div>
@@ -187,7 +187,7 @@ const page = () => {
               <span>$195.00 CAD</span>
             </p>
           </div>
-        
+       
         </div>
       </div>
     </section>
