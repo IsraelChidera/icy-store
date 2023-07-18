@@ -46,7 +46,7 @@ const navbar = () => {
                             <p className='absolute -top-2 -right-2 text-xs'>
                                 1
                             </p>
-                            <Link href="#">
+                            <Link href="/cart">
                                 <FaShoppingCart className='w-5 h-5'/>
                             </Link>
                         </li>
