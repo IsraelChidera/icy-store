@@ -17,6 +17,7 @@ const Collection = () => {
                         <Image
                             src={collectionOne}
                             className='w-full'
+                            alt="product"
                         />
                         <Link href="#" className='pl-4 py-3 inline flex space-x-1 items-center'>
                             <span> Bags </span>
@@ -29,6 +30,7 @@ const Collection = () => {
                             <div>
                                 <Image
                                     src={collectionTwo}
+                                    alt="product collection"
                                 />
                                 <Link href="#" className='pl-4 py-3 inline flex space-x-1 items-center'>
                                     <span> Bags </span>
@@ -39,6 +41,7 @@ const Collection = () => {
                             <div style={{ background: "#f6f6f6" }} className='relative'>
                                 <Image
                                     src={collectionThree}
+                                    alt="product collection"
                                 />
                                 <Link href="#" className='pl-4 py-3 inline flex space-x-1 items-center'>
                                     <span> Bags </span>

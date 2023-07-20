@@ -1,16 +1,56 @@
 import Image from 'next/image';
 import React from 'react';
-import productOne from '../public/images/productOne.svg';
-import productTwo from '../public/images/productTwo.svg';
-import productThree from '../public/images/productThree.svg';
-import productFour from '../public/images/productFour.svg';
-import productFive from '../public/images/productFive.svg';
-import productSix from '../public/images/productSix.svg';
-import productSeven from '../public/images/productSeven.svg';
-import productEight from '../public/images/productEight.svg';
-import productNine from '../public/images/productNine.svg';
 import Link from 'next/link';
+import { useGetFeaturedProductsQuery } from '@/store/productApi';
+import { useQuery } from '@tanstack/react-query';
+import { request, gql } from 'graphql-request'
+
+const query = gql`
+{
+  products(first: 12) {
+    edges {
+      node {
+        id
+        title
+        description
+        featuredImage {
+          id
+          url
+        }
+        variants(first: 3) {
+          edges {
+            node {
+              price {
+                amount
+                currencyCode
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
 const FeaturedProducts = () => {
+    const { data: featuredProducts } = useGetFeaturedProductsQuery();
+
+
+
+    const { data: products, isLoading, error } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () =>
+            request(
+                'https://mock.shop/api',
+                query,
+                // variables are type-checked too!               
+            ),
+    });
+
+    console.log(" All products ", products);
+    console.log("Let get it", products?.products);
+
     return (
         <section className='mt-20 pb-10'>
             <div className='mx-auto w-1/2 text-center'>
@@ -23,153 +63,28 @@ const FeaturedProducts = () => {
             </div>
 
             <div className='mt-14 mx-auto max-w-6xl'>
-                <div className='md:grid grid-cols-4 gap-x-2 gap-y-10'>
-                    <Link href="/product">
-                        <Image
-                            src={productOne}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
-                        <p className='text-xs' style={{ color: "#121212" }}>
-                            $195.00 CAD
-                        </p>
-                    </Link>
+                <div>
+                    <div className='md:grid grid-cols-4 gap-x-2 gap-y-10'>
+                        {
+                            products?.products.edges.map((e) => (
+                                <Link href="/product" key={e.node.title}>
+                                    <Image
+                                        src={e.node.featuredImage?.url}
+                                        alt={e.node.title}
+                                        width={261}
+                                        height={262}
+                                    />
 
-                    <div>
-                        <Image
-                            src={productTwo}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Bo Soft Strap</p>
-                        <p className='text-xs' style={{ color: "#121212" }}>
-                            $365.00 CAD
-                        </p>
-                    </div>
-
-                    <div>
-                        <Image
-                            src={productThree}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
-                        <p className='text-xs' style={{ color: "#121212" }}>
-                            $195.00 CAD
-                        </p>
-                    </div>
-
-                    <div>
-                        <Image
-                            src={productFour}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
-                        <p className='text-xs' style={{ color: "#121212" }}>
-                            $195.00 CAD
-                        </p>
-                    </div>
-
-                    <div>
-                        <Image
-                            src={productFive}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
-                        <p className='text-xs flex items-center space-x-2' style={{ color: "#121212" }}>
-                            <span style={{ fontSize: "11px" }} className='line-through'>
-                                $545.00 CAD
-                            </span>
-
-                            <span>
-                                $195.00 CAD
-                            </span>
-                        </p>
-                    </div>
-
-                    <div>
-                        <Image
-                            src={productSix}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Bo Soft Strap</p>
-                        <p className='text-xs' style={{ color: "#121212" }}>
-                            $365.00 CAD
-                        </p>
-                    </div>
-
-                    <div>
-                        <Image
-                            src={productSeven}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Bo Soft Strap</p>
-                        <p className='text-xs flex items-center space-x-2' style={{ color: "#121212" }}>
-                            <span style={{ fontSize: "11px" }} className='line-through'>
-                                $545.00 CAD
-                            </span>
-
-                            <span>
-                                $195.00 CAD
-                            </span>
-                        </p>
-                    </div>
-
-                    <div>
-                        <Image
-                            src={productEight}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Storml </p>
-                        <p className='text-xs ' style={{ color: "#121212" }}>
-                            <span>
-                                $195.00 CAD
-                            </span>
-                        </p>
-                    </div>
-
-                    <div>
-                        <Image
-                            src={productNine}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
-                        <p className='text-xs' style={{ color: "#121212" }}>
-                            $195.00 CAD
-                        </p>
-                    </div>
-
-                    <div>
-                        <Image
-                            src={productOne}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
-                        <p className='text-xs' style={{ color: "#121212" }}>
-                            $195.00 CAD
-                        </p>
-                    </div>
-
-                    <div>
-                        <Image
-                            src={productTwo}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Bo Soft Strap</p>
-                        <p className='text-xs' style={{ color: "#121212" }}>
-                            $365.00 CAD
-                        </p>
-                    </div>
-
-                    <div>
-                        <Image
-                            src={productThree}
-                            alt="picture of a projec"
-                        />
-                        <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
-                        <p className='text-xs' style={{ color: "#121212" }}>
-                            $195.00 CAD
-                        </p>
+                                    <p className='text-xs pt-2' style={{ color: "#121212" }}> {e.node.title} </p>
+                                    <p className='text-xs' style={{ color: "#121212" }}>
+                                        ${e.node.variants.edges[0].node.price.amount}
+                                    </p>
+                                </Link>
+                            ))
+                        }
                     </div>
                 </div>
+
             </div>
         </section>
     )
