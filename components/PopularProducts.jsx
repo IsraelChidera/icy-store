@@ -9,8 +9,55 @@ import productSeven from '../public/images/productSeven.svg';
 import productEight from '../public/images/productEight.svg';
 import productNine from '../public/images/productNine.svg';
 import Image from 'next/image';
+import { useQuery } from '@tanstack/react-query';
+import { request, gql } from 'graphql-request';
+
+const queryForCollectionProducts = gql`
+{
+    products(first: 8, sortKey: CREATED_AT, reverse: true) {
+      edges {
+        node {
+          id
+          title
+          description
+          createdAt
+          images(first: 1) {
+            edges {
+              node {
+                url
+              }
+            }
+          }
+          variants(first: 1) {
+            edges {
+              node {
+                price {
+                  amount
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+`;
 
 const PopularProducts = () => {
+
+    const { data: collectionProducts, isLoading, error } = useQuery({
+        queryKey: ['collectionProducts'],
+        queryFn: async () =>
+            request(
+                'https://mock.shop/api',
+                queryForCollectionProducts,
+                // variables are type-checked too!               
+            ),
+    });
+
+    console.log("prod: ", collectionProducts);
+
     return (
         <section className='mx-auto max-w-6xl mt-20 pb-10'>
             <div className='mx-auto w-1/2 text-center'>
@@ -22,108 +69,29 @@ const PopularProducts = () => {
                 </h2>
             </div>
 
-            <div className='mt-10 md:grid grid-cols-4 gap-x-2 gap-y-10'>
-                <div>
-                    <Image
-                        src={productFive}
-                        alt="picture of a projec"
-                    />
-                    <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
-                    <p className='text-xs flex items-center space-x-2' style={{ color: "#121212" }}>
-                        <span style={{ fontSize: "11px" }} className='line-through'>
-                            $545.00 CAD
-                        </span>
 
-                        <span>
-                            $195.00 CAD
-                        </span>
-                    </p>
-                </div>
+            <div className='mt-10 md:grid grid-cols-4 gap-x-2 gap-y-6 '>
 
-                <div>
-                    <Image
-                        src={productSix}
-                        alt="picture of a projec"
-                    />
-                    <p className='text-xs pt-2' style={{ color: "#121212" }}> Bo Soft Strap</p>
-                    <p className='text-xs' style={{ color: "#121212" }}>
-                        $365.00 CAD
-                    </p>
-                </div>
+                {
+                    collectionProducts?.products.edges.map((p) => (
+                        <div >
+                            <img
+                                src={p.node.images?.edges[0].node.url}                                
+                                alt="picture of a project"
+                                className='h-full w-full'
+                                //src={p.node.featuredImage?.url}
+                            />                            
 
-                <div>
-                    <Image
-                        src={productSeven}
-                        alt="picture of a projec"
-                    />
-                    <p className='text-xs pt-2' style={{ color: "#121212" }}> Bo Soft Strap</p>
-                    <p className='text-xs flex items-center space-x-2' style={{ color: "#121212" }}>
-                        <span style={{ fontSize: "11px" }} className='line-through'>
-                            $545.00 CAD
-                        </span>
-
-                        <span>
-                            $195.00 CAD
-                        </span>
-                    </p>
-                </div>
-
-                <div>
-                    <Image
-                        src={productEight}
-                        alt="picture of a projec"
-                    />
-                    <p className='text-xs pt-2' style={{ color: "#121212" }}> Storml </p>
-                    <p className='text-xs ' style={{ color: "#121212" }}>
-                        <span>
-                            $195.00 CAD
-                        </span>
-                    </p>
-                </div>
-
-                <div>
-                    <Image
-                        src={productNine}
-                        alt="picture of a projec"
-                    />
-                    <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
-                    <p className='text-xs' style={{ color: "#121212" }}>
-                        $195.00 CAD
-                    </p>
-                </div>
-
-                <div>
-                    <Image
-                        src={productOne}
-                        alt="picture of a projec"
-                    />
-                    <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
-                    <p className='text-xs' style={{ color: "#121212" }}>
-                        $195.00 CAD
-                    </p>
-                </div>
-
-                <div>
-                    <Image
-                        src={productTwo}
-                        alt="picture of a projec"
-                    />
-                    <p className='text-xs pt-2' style={{ color: "#121212" }}> Bo Soft Strap</p>
-                    <p className='text-xs' style={{ color: "#121212" }}>
-                        $365.00 CAD
-                    </p>
-                </div>
-
-                <div>
-                    <Image
-                        src={productThree}
-                        alt="picture of a projec"
-                    />
-                    <p className='text-xs pt-2' style={{ color: "#121212" }}> Hobo Small</p>
-                    <p className='text-xs' style={{ color: "#121212" }}>
-                        $195.00 CAD
-                    </p>
-                </div>
+                            <p className='text-xs pt-2' style={{ color: "#121212" }}> {p.node.title} </p>
+                            <p className='text-xs' style={{ color: "#121212" }}>
+                                <span className=''>
+                                    ${p.node.variants?.edges[0].node.price.amount}
+                                </span>
+                            </p>
+                        </div>
+                    ))
+                }
+            
             </div>
         </section>
     )

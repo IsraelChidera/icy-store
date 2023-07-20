@@ -5,22 +5,48 @@ import collectionThree from '../public/images/stock-collection-three.svg';
 import Image from 'next/image';
 import { BsArrowRight } from 'react-icons/bs';
 import Link from 'next/link';
+import { useQuery } from '@tanstack/react-query';
+import { request, gql } from 'graphql-request';
+
+const queryForCollectionWithProducts = gql`
+{
+    collections(first: 10) {
+      edges {
+        cursor
+        node {
+          id
+          handle
+          title
+          description
+          image {
+            id
+            url
+          }
+        }
+      }
+    }
+  }
+  
+`
 
 const Collection = () => {
+
+
+    
     return (
         <section className='mx-auto max-w-6xl mt-20 pb-10'>
             <p className='text-xl'> Back in Stock</p>
 
             <div className='mt-6'>
                 <div className='md:grid grid-cols-6 gap-x-4'>
-                    <div style={{ background: "#f0f0f0" }} className='col-span-4 relative'>
+                    <div style={{ background: "#f0f0f0" }} className='col-span-4 relative'>                        
                         <Image
                             src={collectionOne}
                             className='w-full'
                             alt="product"
                         />
                         <Link href="#" className='pl-4 py-3 inline flex space-x-1 items-center'>
-                            <span> Bags </span>
+                            <span> View collection </span>
                             <BsArrowRight />
                         </Link>
                     </div>
@@ -33,7 +59,7 @@ const Collection = () => {
                                     alt="product collection"
                                 />
                                 <Link href="#" className='pl-4 py-3 inline flex space-x-1 items-center'>
-                                    <span> Bags </span>
+                                    <span> View collection </span>
                                     <BsArrowRight />
                                 </Link>
                             </div>
@@ -44,7 +70,7 @@ const Collection = () => {
                                     alt="product collection"
                                 />
                                 <Link href="#" className='pl-4 py-3 inline flex space-x-1 items-center'>
-                                    <span> Bags </span>
+                                    <span> View collection </span>
                                     <BsArrowRight />
                                 </Link>
                             </div>

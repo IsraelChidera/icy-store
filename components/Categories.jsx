@@ -1,7 +1,38 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from 'next/link';
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { request, gql } from 'graphql-request';
+import Image from 'next/image';
+import { BsArrowUpRight } from 'react-icons/bs';
+
+const collectionsQuery = gql`
+{
+    collections(first: 4) {
+      edges {
+        node {
+          id
+          title
+          image {
+            altText
+            url
+          }
+        }
+      }
+    }
+  }
+  
+`;
 
 const Categories = () => {
+
+    const { data: collections, isLoading: loadCollections } = useQuery({
+        queryKey: ['collections'],
+        queryFn: async () => request(
+            'https://mock.shop/api',
+            collectionsQuery
+        )
+    });    
+
     return (
         <section className='mt-20 pb-10'>
             <div className='mx-auto w-1/2 text-center'>
@@ -15,31 +46,86 @@ const Categories = () => {
 
             <div className='mt-10 w-3/4 mx-auto '>
                 <div className='md:grid grid-cols-4 gap-x-4 '>
-                    <div className='collection-one col-span-2 relative'>
+                    <div className=' col-span-2 relative'>
+                        {
+                            collections?.collections?.edges.slice(0, 1).map((c) => (
+                                <>
+                                    <Image src={c.node.image.url} alt={c.node.title} fill={true} />
 
-                        <Link className='bg-white text-black absolute bottom-10 left-8 px-4 py-2 text-xs' href="#">
-                            Shop Now
-                        </Link>
+                                    <Link className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4' href={c.node.id}>
+                                        {c.node.title}
+                                    </Link>
+
+                                    <p className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                    >
+                                        <span>Shop now</span>
+                                        <BsArrowUpRight />
+                                    </p>
+                                </>
+                            ))
+                        }
 
                     </div>
 
                     <div className='collection-two relative'>
-                        <Link className='bg-white text-black absolute bottom-10 left-8 px-4 py-2 text-xs' href="#">
-                            Shop Now
-                        </Link>
+                        {
+                            collections?.collections?.edges.slice(1, 2).map((c) => (
+                                <>                                    
+
+                                    <Link className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4' href={c.node.id}>
+                                        {c.node.title}
+                                    </Link>
+
+                                    <p className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                    >
+                                        <span>Shop now</span>
+                                        <BsArrowUpRight />
+                                    </p>
+                                </>
+                            ))
+                        }
+
                     </div>
 
-                    <div className='flex flex-col justify-between items-'>
+                    <div className='flex flex-col space-y-4 justify-between items-'>
                         <div className='collection-three relative'>
-                            <Link className='bg-white text-black absolute bottom-8 left-6 px-4 py-2 text-xs' href="#">
-                                Shop Now
-                            </Link>
+                        {
+                            collections?.collections?.edges.slice(2, 3).map((c) => (
+                                <>
+                                    <Image src={c.node.image.url} alt={c.node.title} fill={true} />
+
+                                    <Link className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4' href={`collections/${c.node.id}`}>
+                                        {c.node.title}
+                                    </Link>
+
+                                    <p className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                    >
+                                        <span>Shop now</span>
+                                        <BsArrowUpRight />
+                                    </p>
+                                </>
+                            ))
+                        }
                         </div>
 
                         <div className='collection-four relative'>
-                            <Link className='bg-white text-black absolute bottom-8 left-6 px-4 py-2 text-xs' href="#">
-                                Shop Now
-                            </Link>
+                        {
+                            collections?.collections?.edges.slice(3, 4).map((c) => (
+                                <>
+                                    <Image src={c.node.image.url} alt={c.node.title} fill={true} />
+
+                                    <Link className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4' href={c.node.id}>
+                                        {c.node.title}
+                                    </Link>
+
+                                    <p className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                    >
+                                        <span>Shop now</span>
+                                        <BsArrowUpRight />
+                                    </p>
+                                </>
+                            ))
+                        }
                         </div>
                     </div>
                 </div>
