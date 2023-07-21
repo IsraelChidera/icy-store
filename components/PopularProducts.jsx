@@ -70,11 +70,11 @@ const PopularProducts = () => {
             </div>
 
 
-            <div className='mt-10 md:grid grid-cols-4 gap-x-2 gap-y-6 '>
+            <div className='mt-10 md:grid grid-cols-4 gap-x-2 gap-y-16 '>
 
                 {
                     collectionProducts?.products.edges.map((p) => (
-                        <div >
+                        <div className=''>
                             <img
                                 src={p.node.images?.edges[0].node.url}                                
                                 alt="picture of a project"
@@ -82,8 +82,8 @@ const PopularProducts = () => {
                                 //src={p.node.featuredImage?.url}
                             />                            
 
-                            <p className='text-xs pt-2' style={{ color: "#121212" }}> {p.node.title} </p>
-                            <p className='text-xs' style={{ color: "#121212" }}>
+                            <p className='text-sm pt-2' style={{ color: "#121212" }}> {p.node.title} </p>
+                            <p className='text-sm' style={{ color: "#121212" }}>
                                 <span className=''>
                                     ${p.node.variants?.edges[0].node.price.amount}
                                 </span>
