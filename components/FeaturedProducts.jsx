@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { request, gql } from 'graphql-request';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import ReactSkeleton from 'react-skeleton-state';
 
 const query = gql`
 {
@@ -62,14 +62,48 @@ const FeaturedProducts = () => {
 
             <div className='mt-14 mx-auto max-w-6xl'>
                 <div>
-                    {isLoading && (<>
-                        <div className='flex justify-center items-center mt-4'>
-                            <p className='text-center'>
-                                loading products . . .
-                            </p>
-                        </div>
-                    </>)}
                     <div className='md:grid grid-cols-4 gap-x-2 gap-y-10'>
+                        {isLoading && (
+                            <>
+                                <div>
+                                    <ReactSkeleton width={280} height={328} variant="rectangle"></ReactSkeleton>
+                                    <div className="mt-1 pt-2">
+                                        <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                                    </div>
+                                    <div className="mt-1 pt-1">
+                                        <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ReactSkeleton width={280} height={328} variant="rectangle"></ReactSkeleton>
+                                    <div className="mt-1 pt-2">
+                                        <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                                    </div>
+                                    <div className="mt-1 pt-1">
+                                        <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <ReactSkeleton width={280} height={328} variant="rectangle"></ReactSkeleton>
+                                    <div className="mt-1 pt-2">
+                                        <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                                    </div>
+                                    <div className="mt-1 pt-1">
+                                        <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ReactSkeleton width={280} height={328} variant="rectangle"></ReactSkeleton>
+                                    <div className="mt-1 pt-2">
+                                        <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                                    </div>
+                                    <div className="mt-1 pt-1">
+                                        <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                                    </div>
+                                </div>
+                            </>
+                        )}
                         {
                             products?.products.edges.map((e) => (
                                 <>

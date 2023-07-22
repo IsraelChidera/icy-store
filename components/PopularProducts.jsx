@@ -1,16 +1,7 @@
 import React from 'react';
-import productOne from '../public/images/productOne.svg';
-import productTwo from '../public/images/productTwo.svg';
-import productThree from '../public/images/productThree.svg';
-import productFour from '../public/images/productFour.svg';
-import productFive from '../public/images/productFive.svg';
-import productSix from '../public/images/productSix.svg';
-import productSeven from '../public/images/productSeven.svg';
-import productEight from '../public/images/productEight.svg';
-import productNine from '../public/images/productNine.svg';
-import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
 import { request, gql } from 'graphql-request';
+import ReactSkeleton from 'react-skeleton-state';
 
 const queryForCollectionProducts = gql`
 {
@@ -71,16 +62,56 @@ const PopularProducts = () => {
 
 
             <div className='mt-10 md:grid grid-cols-4 gap-x-2 gap-y-16 '>
+                {isLoading && (
+                    <>
+                        <div>
+                            <ReactSkeleton width={280} height={328} variant="rectangle"></ReactSkeleton>
+                            <div className="mt-1 pt-2">
+                                <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                            </div>
+                            <div className="mt-1 pt-1">
+                                <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                            </div>
+                        </div>
+                        <div>
+                            <ReactSkeleton width={280} height={328} variant="rectangle"></ReactSkeleton>
+                            <div className="mt-1 pt-2">
+                                <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                            </div>
+                            <div className="mt-1 pt-1">
+                                <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                            </div>
+                        </div>
 
+                        <div>
+                            <ReactSkeleton width={280} height={328} variant="rectangle"></ReactSkeleton>
+                            <div className="mt-1 pt-2">
+                                <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                            </div>
+                            <div className="mt-1 pt-1">
+                                <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                            </div>
+                        </div>
+                        <div>
+                            <ReactSkeleton width={280} height={328} variant="rectangle"></ReactSkeleton>
+                            <div className="mt-1 pt-2">
+                                <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                            </div>
+                            <div className="mt-1 pt-1">
+                                <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
+                            </div>
+                        </div>
+                    </>
+                )}
                 {
                     collectionProducts?.products.edges.map((p) => (
                         <div className=''>
                             <img
-                                src={p.node.images?.edges[0].node.url}                                
+                                src={p.node.images?.edges[0].node.url}
                                 alt="picture of a project"
                                 className='h-full w-full'
-                                //src={p.node.featuredImage?.url}
-                            />                            
+                            //src={p.node.featuredImage?.url}
+                            />
 
                             <p className='text-sm pt-2' style={{ color: "#121212" }}> {p.node.title} </p>
                             <p className='text-sm' style={{ color: "#121212" }}>
@@ -91,7 +122,7 @@ const PopularProducts = () => {
                         </div>
                     ))
                 }
-            
+
             </div>
         </section>
     )

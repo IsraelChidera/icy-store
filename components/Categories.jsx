@@ -46,7 +46,7 @@ const Categories = () => {
 
             <div className='mt-10 w-3/4 mx-auto '>
                 <div className='md:grid grid-cols-4 gap-x-4 '>
-                    <div className=' col-span-2 relative'>
+                    <div className='collection-one col-span-2 relative'>
                         {
                             collections?.collections?.edges.slice(0, 1).map((c) => (
                                 <>
