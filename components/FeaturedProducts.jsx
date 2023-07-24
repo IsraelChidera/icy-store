@@ -47,7 +47,6 @@ const FeaturedProducts = () => {
             ),
     });
 
-  
 
     return (
         <section className='mt-20 pb-10'>
