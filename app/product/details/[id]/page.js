@@ -65,6 +65,31 @@ export default function Page({ params }) {
         <div className="md:grid grid-cols-6 gap-x-6">
           <div className="col-span-4 space-y-2">
             <div>
+              {isLoading && (
+                <>
+                  <div>
+                    <ReactSkeleton
+                      width={760}
+                      height={760}
+                      variant="rectangle"
+                    ></ReactSkeleton>
+                    <div className="mt-1 pt-2">
+                      <ReactSkeleton
+                        width={200}
+                        fontSize={"1rem"}
+                        variant="text"
+                      ></ReactSkeleton>
+                    </div>
+                    <div className="mt-1 pt-1">
+                      <ReactSkeleton
+                        width={200}
+                        fontSize={"1rem"}
+                        variant="text"
+                      ></ReactSkeleton>
+                    </div>
+                  </div>
+                </>
+              )}
               <img
                 src={singleProductItem?.data.product.images.edges[0].node.url}
                 alt={singleProductItem?.data?.product?.title}
@@ -73,6 +98,17 @@ export default function Page({ params }) {
 
             <div className="flex space-x-2 items-center">
               <div>
+                {isLoading && (
+                  <>
+                    <div>
+                      <ReactSkeleton
+                        width={376}
+                        height={376}
+                        variant="rectangle"
+                      ></ReactSkeleton>
+                    </div>
+                  </>
+                )}
                 <img
                   src={singleProductItem?.data.product.images.edges[0].node.url}
                   alt={singleProductItem?.data?.product?.title}
@@ -80,6 +116,17 @@ export default function Page({ params }) {
               </div>
 
               <div>
+                {isLoading && (
+                  <>
+                    <div>
+                      <ReactSkeleton
+                        width={376}
+                        height={376}
+                        variant="rectangle"
+                      ></ReactSkeleton>
+                    </div>
+                  </>
+                )}
                 <img
                   src={singleProductItem?.data.product.images.edges[0].node.url}
                   alt={singleProductItem?.data?.product?.title}
@@ -90,10 +137,44 @@ export default function Page({ params }) {
 
           <div className="col-span-2 ">
             <div className="space-y-4">
+              {isLoading && (
+                <>
+                  <div>
+                    <div className="mt-1 pt-2">
+                      <ReactSkeleton
+                        width={200}
+                        fontSize={"1rem"}
+                        variant="text"
+                      ></ReactSkeleton>
+                    </div>
+                    <div className="mt-1 pt-1">
+                      <ReactSkeleton
+                        width={200}
+                        fontSize={"1rem"}
+                        variant="text"
+                      ></ReactSkeleton>
+                    </div>
+                  </div>
+                </>
+              )}
               <h1 className="text-2xl">
                 {" "}
                 {singleProductItem?.data?.product?.title}{" "}
               </h1>
+
+              {isLoading && (
+                <>
+                  <div>
+                    <div className="mt-1 pt-1">
+                      <ReactSkeleton
+                        width={200}
+                        fontSize={"1rem"}
+                        variant="text"
+                      ></ReactSkeleton>
+                    </div>
+                  </div>
+                </>
+              )}
               <p className="text-sm">
                 {" "}
                 $
@@ -234,7 +315,7 @@ export default function Page({ params }) {
                 </div>
               </>
             )}
-            {products?.products.edges.map((e) => (
+            {products?.products.edges.slice(1, 9).map((e) => (
               <>
                 <Link
                   href={`/product/details/${encodeURIComponent(e.node.id)}`}
