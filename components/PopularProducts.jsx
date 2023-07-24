@@ -47,7 +47,7 @@ const PopularProducts = () => {
             ),
     });
 
-    console.log("prod: ", collectionProducts);
+
 
     return (
         <section className='mx-auto max-w-6xl mt-20 pb-10'>

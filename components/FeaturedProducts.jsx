@@ -47,7 +47,7 @@ const FeaturedProducts = () => {
             ),
     });
 
-
+  
 
     return (
         <section className='mt-20 pb-10'>
@@ -107,7 +107,7 @@ const FeaturedProducts = () => {
                         {
                             products?.products.edges.map((e) => (
                                 <>
-                                    <Link href="/product" key={e.node.title}>
+                                    <Link href={`/product/details/${encodeURIComponent(e.node.id)}`} key={e.node.title}>
                                         <Image
                                             src={e.node.featuredImage?.url}
                                             alt={e.node.title}
