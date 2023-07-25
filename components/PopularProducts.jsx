@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { request, gql } from 'graphql-request';
 import ReactSkeleton from 'react-skeleton-state';
+import Link from 'next/link';
 
 const queryForCollectionProducts = gql`
 {
@@ -37,8 +38,8 @@ const queryForCollectionProducts = gql`
 
 const PopularProducts = () => {
 
-    const { data: collectionProducts, isLoading, error } = useQuery({
-        queryKey: ['collectionProducts'],
+    const { data: collectionProducts, isLoading: loading, error } = useQuery({
+        queryKey: ['collectionWithProducts'],
         queryFn: async () =>
             request(
                 'https://mock.shop/api',
@@ -61,8 +62,8 @@ const PopularProducts = () => {
             </div>
 
 
-            <div className='mt-10 md:grid grid-cols-4 gap-x-2 gap-y-16 '>
-                {isLoading && (
+            <div className='mt-10 md:grid grid-cols-4 gap-x-4 gap-y-28 '>
+                {loading && (
                     <>
                         <div>
                             <ReactSkeleton width={280} height={328} variant="rectangle"></ReactSkeleton>
@@ -104,13 +105,12 @@ const PopularProducts = () => {
                     </>
                 )}
                 {
-                    collectionProducts?.products.edges.map((p) => (
-                        <div className=''>
+                    collectionProducts?.products?.edges?.map((p) => (
+                        <Link href={`/product/details/${encodeURIComponent(p.node.id)}`} key={p.node.title} className=''>
                             <img
                                 src={p.node.images?.edges[0].node.url}
                                 alt="picture of a project"
-                                className='h-full w-full'
-                            //src={p.node.featuredImage?.url}
+                                className='h-full w-full'                            
                             />
 
                             <p className='text-sm pt-2' style={{ color: "#121212" }}> {p.node.title} </p>
@@ -119,7 +119,7 @@ const PopularProducts = () => {
                                     ${p.node.variants?.edges[0].node.price.amount}
                                 </span>
                             </p>
-                        </div>
+                        </Link>
                     ))
                 }
 

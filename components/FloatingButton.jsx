@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState, useEffect } from 'react';
 import { BsArrowUp } from 'react-icons/bs';
 
@@ -30,7 +31,7 @@ const FloatingButton = () => {
 
     return (
         <button
-            className={` fixed bottom-4 right-10 p-6 z-10 rounded-full bg-black text-white ${showButton ? 'block' : 'hidden'}`}
+            className={`fixed bottom-4 right-10 p-6 z-10 drop-shadow-2xl rounded-full bg-black text-white ${showButton ? 'block' : 'hidden'}`}
             onClick={scrollToTop}
         >
             <BsArrowUp />
