@@ -10,7 +10,7 @@ const Hero = () => {
                         <p className='text-xs'> SUMMER 2023 </p>
                         <h1 className='text-7xl'> -30% Discount </h1>
                         <p className='text-base pb-6'> We know how large objects are expensive. Buy things on a small scale</p>
-                        <Link className='border border-white px-4 py-2 text-base' href="#">
+                        <Link className='border border-white px-4 py-2 text-base' href="/products">
                             Shop Now
                         </Link>
                     </div>

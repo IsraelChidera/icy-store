@@ -27,7 +27,7 @@ const navbar = () => {
                         </li>
 
                         <li>
-                            <Link href="#">
+                            <Link href="/products">
                                 Shop
                             </Link>
                         </li>
@@ -41,22 +41,13 @@ const navbar = () => {
                 </div>
 
                 <div className='flex justify-end'>
-                    <ul className='flex items-center space-x-10'>
+                    <ul>
                         <li className='relative'>
                             <p className='absolute -top-2 -right-2 text-xs'>
                                 1
                             </p>
                             <Link href="/cart">
-                                <FaShoppingCart className='w-5 h-5'/>
-                            </Link>
-                        </li>
-
-                        <li className='relative'>
-                            <p className='absolute -top-2 -right-2 text-xs'>
-                                1
-                            </p>
-                            <Link href="#">
-                                <AiFillHeart className='w-5 h-5'/>
+                                <FaShoppingCart className='w-5 h-5' />
                             </Link>
                         </li>
                     </ul>

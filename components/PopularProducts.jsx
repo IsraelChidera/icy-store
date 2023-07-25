@@ -1,10 +1,15 @@
+'use client'
+
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { request, gql } from 'graphql-request';
 import ReactSkeleton from 'react-skeleton-state';
 import Link from 'next/link';
 
-const queryForCollectionProducts = gql`
+
+const PopularProducts = () => {
+
+    const queryForCollectionProducts = gql`
 {
     products(first: 8, sortKey: CREATED_AT, reverse: true) {
       edges {
@@ -34,11 +39,10 @@ const queryForCollectionProducts = gql`
     }
   }
   
-`;
+    `;
 
-const PopularProducts = () => {
 
-    const { data: collectionProducts, isLoading: loading, error } = useQuery({
+    const { data: collectionProducts, isLoading: loading } = useQuery({
         queryKey: ['collectionWithProducts'],
         queryFn: async () =>
             request(
@@ -110,7 +114,7 @@ const PopularProducts = () => {
                             <img
                                 src={p.node.images?.edges[0].node.url}
                                 alt="picture of a project"
-                                className='h-full w-full'                            
+                                className='h-full w-full'
                             />
 
                             <p className='text-sm pt-2' style={{ color: "#121212" }}> {p.node.title} </p>

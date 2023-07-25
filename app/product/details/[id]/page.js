@@ -3,12 +3,6 @@
 import React from "react";
 import { useGetSingleProductQuery } from "@/store/productApi";
 import Image from "next/image";
-import product from "../../../../public/images/Imageproduct.svg";
-import product2 from "../../../../public/images/Imageproduct2.svg";
-import productFive from "../../../../public/images/productFive.svg";
-import productSix from "../../../../public/images/productSix.svg";
-import productSeven from "../../../../public/images/productSeven.svg";
-import productEight from "../../../../public/images/productEight.svg";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { request, gql } from "graphql-request";
