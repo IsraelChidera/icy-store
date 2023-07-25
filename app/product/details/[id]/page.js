@@ -48,8 +48,7 @@ export default function Page({ params }) {
     queryFn: async () =>
       request(
         "https://mock.shop/api",
-        query
-        // variables are type-checked too!
+        query        
       ),
   });
 
