@@ -35,6 +35,7 @@ const Categories = () => {
         )
     });
 
+    console.log("c: ", collections);
     return (
         <section className='mt-20 pb-10'>
             <div className='mx-auto w-1/2 text-center'>
@@ -54,15 +55,15 @@ const Categories = () => {
                                 <>
                                     <Image src={c.node.image.url} alt={c.node.title} fill={true} />
 
-                                    <Link className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4' href={c.node.id}>
+                                    <span className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4'>
                                         {c.node.title}
-                                    </Link>
+                                    </span>
 
-                                    <p className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                    <Link href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
                                     >
-                                        <Link href="#">Shop now</Link>
+                                        <span>Shop now</span>
                                         <BsArrowUpRight />
-                                    </p>
+                                    </Link>
                                 </>
                             ))
                         }
@@ -73,15 +74,15 @@ const Categories = () => {
                             collections?.collections?.edges.slice(1, 2).map((c) => (
                                 <>
 
-                                    <Link className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4' href={c.node.id}>
+                                    <span className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4'>
                                         {c.node.title}
-                                    </Link>
+                                    </span>
 
-                                    <p className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                    <Link href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
                                     >
-                                        <Link href="#">Shop now</Link>
+                                        <span >Shop now</span>
                                         <BsArrowUpRight />
-                                    </p>
+                                    </Link>
                                 </>
                             ))
                         }
@@ -95,15 +96,15 @@ const Categories = () => {
                                     <>
                                         <Image src={c.node.image.url} alt={c.node.title} fill={true} />
 
-                                        <Link className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4' href={`collections/${c.node.id}`}>
+                                        <span className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4' href={`collections/${c.node.id}`}>
                                             {c.node.title}
-                                        </Link>
+                                        </span>
 
-                                        <p className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                        <Link href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
                                         >
-                                            <Link href="#">Shop now</Link>
+                                            <span>Shop now</span>
                                             <BsArrowUpRight />
-                                        </p>
+                                        </Link>
                                     </>
                                 ))
                             }
@@ -115,15 +116,15 @@ const Categories = () => {
                                     <>
                                         <Image src={c.node.image.url} alt={c.node.title} fill={true} />
 
-                                        <Link className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4' href={c.node.id}>
+                                        <span className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4'>
                                             {c.node.title}
-                                        </Link>
+                                        </span>
 
-                                        <p className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                        <Link href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
                                         >
-                                            <Link href="#">Shop now</Link>
+                                            <span>Shop now</span>
                                             <BsArrowUpRight />
-                                        </p>
+                                        </Link>
                                     </>
                                 ))
                             }
