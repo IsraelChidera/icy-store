@@ -45,11 +45,7 @@ export default function Page({ params }) {
     error,
   } = useQuery({
     queryKey: ["singleProductPage"],
-    queryFn: async () =>
-      request(
-        "https://mock.shop/api",
-        query        
-      ),
+    queryFn: async () => request("https://mock.shop/api", query),
   });
 
   return (
@@ -86,7 +82,7 @@ export default function Page({ params }) {
               <img
                 src={singleProductItem?.data?.product?.images.edges[0].node.url}
                 alt={singleProductItem?.data?.product?.title}
-              />
+              />             
             </div>
 
             <div className="flex space-x-2 items-center">
@@ -103,7 +99,9 @@ export default function Page({ params }) {
                   </>
                 )}
                 <img
-                  src={singleProductItem?.data?.product?.images?.edges[0].node.url}
+                  src={
+                    singleProductItem?.data?.product?.images?.edges[0].node.url
+                  }
                   alt={singleProductItem?.data?.product?.title}
                 />
               </div>
@@ -121,7 +119,9 @@ export default function Page({ params }) {
                   </>
                 )}
                 <img
-                  src={singleProductItem?.data?.product?.images?.edges[0].node.url}
+                  src={
+                    singleProductItem?.data?.product?.images?.edges[0].node.url
+                  }
                   alt={singleProductItem?.data?.product?.title}
                 />
               </div>

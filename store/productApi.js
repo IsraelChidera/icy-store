@@ -13,9 +13,9 @@ export const productApi = createApi({
         `https://mock.shop/api?query={product(id:%20%22${id}%22){title%20description%20images(first:%201){edges%20{node%20{url}}}%20variants(first:%201){edges%20{node%20{price%20{amount}}}}}}`,
     }),
     getCollectionWithProducts: builder.query({
-      query: (id) =>
-        // `https://mock.shop/api?query={collection(id:%20%22${id}%22){products(first:%2010){edges%20{node%20{title%20description%20variants(first:%201){edges%20{node%20{price%20{amount%20currencyCode}}}}}}}}}`,
-        `https://mock.shop/api?query={collection(id:%20%22${id}%22){products(first:%2010){edges%20{node%20{title%20description%20images(first:%201){edges%20{node%20{url}}}%20variants(first:%201){edges%20{node%20{price%20{amount%20currencyCode}}}}}}}}}`
+      query: (id) =>       
+        //`https://mock.shop/api?query={collection(id:%20%22${id}%22){products(first:%2010){edges%20{node%20{title%20description%20images(first:%201){edges%20{node%20{url}}}%20variants(first:%201){edges%20{node%20{price%20{amount%20currencyCode}}}}}}}}}`,
+        `https://mock.shop/api?query=%7B%20collection(id%3A%20%22${id}%22)%20%7B%20products(first%3A%2010)%20%7B%20edges%20%7B%20node%20%7B%20id%20title%20description%20images(first%3A%201)%20%7B%20edges%20%7B%20node%20%7B%20url%20%7D%20%7D%20%7D%20variants(first%3A%201)%20%7B%20edges%20%7B%20node%20%7B%20price%20%7B%20amount%20currencyCode%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%7D`,
     }),
   }),
 });
