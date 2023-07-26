@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -5,18 +7,68 @@ import cartImage from "../../public/images/cart-image.svg";
 import cartImage1 from "../../public/images/cart-image-1.svg";
 import cartImage2 from "../../public/images/cart-image-2.svg";
 import { AiFillDelete } from "react-icons/ai";
-import productFive from "../../public/images/productFive.svg";
-import productSix from "../../public/images/productSix.svg";
-import productSeven from "../../public/images/productSeven.svg";
-import productEight from "../../public/images/productEight.svg";
+import { useQuery } from "@tanstack/react-query";
+import { request, gql } from "graphql-request";
+import ReactSkeleton from "react-skeleton-state";
 
 const page = () => {
+  const queryForCollectionProducts = gql`
+    {
+      products(first: 8, sortKey: CREATED_AT, reverse: true) {
+        edges {
+          node {
+            id
+            title
+            description
+            createdAt
+            images(first: 1) {
+              edges {
+                node {
+                  url
+                }
+              }
+            }
+            variants(first: 1) {
+              edges {
+                node {
+                  price {
+                    amount
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const {
+    data: collectionProducts,
+    isLoading: loading,
+    error,
+  } = useQuery({
+    queryKey: ["cartCollectionWithProducts"],
+    queryFn: async () => {
+      try {
+        const response = await request(
+          "https://mock.shop/api",
+          queryForCollectionProducts
+          // variables are type-checked too!
+        );
+        return response;
+      } catch (error) {
+        return error;
+      }
+    },
+  });
+
   return (
     <section className="mx-auto max-w-6xl mt-20 pb-10">
       <div className="flex items-end justify-between">
         <h1 className="text-2xl"> Your Cart </h1>
 
-        <Link href="/product" className="text-xs underline underline-offset">
+        <Link href="/products" className="text-xs underline underline-offset">
           Continue shopping
         </Link>
       </div>
@@ -158,122 +210,131 @@ const page = () => {
       <div className="mt-20">
         <p className="text-xl"> You may also like </p>
 
-        <div className="mt-10 md:grid grid-cols-4 gap-x-2 gap-y-10">
-          <div>
-            <Image src={productFive} alt="picture of a projec" />
-            <p className="text-xs pt-2" style={{ color: "#121212" }}>
-              {" "}
-              Hobo Small
-            </p>
-            <p
-              className="text-xs flex items-center space-x-2"
-              style={{ color: "#121212" }}
+        <div className="mt-10 md:grid grid-cols-4 gap-x-4 gap-y-28 ">
+          {loading && (
+            <>
+              <div>
+                <ReactSkeleton
+                  width={280}
+                  height={328}
+                  variant="rectangle"
+                ></ReactSkeleton>
+                <div className="mt-1 pt-2">
+                  <ReactSkeleton
+                    width={200}
+                    fontSize={"1rem"}
+                    variant="text"
+                  ></ReactSkeleton>
+                </div>
+                <div className="mt-1 pt-1">
+                  <ReactSkeleton
+                    width={200}
+                    fontSize={"1rem"}
+                    variant="text"
+                  ></ReactSkeleton>
+                </div>
+              </div>
+              <div>
+                <ReactSkeleton
+                  width={280}
+                  height={328}
+                  variant="rectangle"
+                ></ReactSkeleton>
+                <div className="mt-1 pt-2">
+                  <ReactSkeleton
+                    width={200}
+                    fontSize={"1rem"}
+                    variant="text"
+                  ></ReactSkeleton>
+                </div>
+                <div className="mt-1 pt-1">
+                  <ReactSkeleton
+                    width={200}
+                    fontSize={"1rem"}
+                    variant="text"
+                  ></ReactSkeleton>
+                </div>
+              </div>
+
+              <div>
+                <ReactSkeleton
+                  width={280}
+                  height={328}
+                  variant="rectangle"
+                ></ReactSkeleton>
+                <div className="mt-1 pt-2">
+                  <ReactSkeleton
+                    width={200}
+                    fontSize={"1rem"}
+                    variant="text"
+                  ></ReactSkeleton>
+                </div>
+                <div className="mt-1 pt-1">
+                  <ReactSkeleton
+                    width={200}
+                    fontSize={"1rem"}
+                    variant="text"
+                  ></ReactSkeleton>
+                </div>
+              </div>
+              <div>
+                <ReactSkeleton
+                  width={280}
+                  height={328}
+                  variant="rectangle"
+                ></ReactSkeleton>
+                <div className="mt-1 pt-2">
+                  <ReactSkeleton
+                    width={200}
+                    fontSize={"1rem"}
+                    variant="text"
+                  ></ReactSkeleton>
+                </div>
+                <div className="mt-1 pt-1">
+                  <ReactSkeleton
+                    width={200}
+                    fontSize={"1rem"}
+                    variant="text"
+                  ></ReactSkeleton>
+                </div>
+              </div>
+            </>
+          )}
+          {error && (
+            <>
+              <div className="flex justify-center text-center items-center">
+                <p>
+                  There was an error loading the products. Return to{" "}
+                  <Link href="/" className="underline">
+                    home
+                  </Link>
+                </p>
+              </div>
+            </>
+          )}
+
+          {collectionProducts?.products?.edges?.map((p, i) => (
+            <Link
+              href={`/product/details/${encodeURIComponent(p.node.id)}`}
+              key={i}
             >
-              <span style={{ fontSize: "11px" }} className="line-through">
-                $545.00 CAD
-              </span>
+              <img
+                src={p.node.images?.edges[0].node.url}
+                alt="picture of a project"
+                className="h-full w-full"
+              />
 
-              <span>$195.00 CAD</span>
-            </p>
-          </div>
-
-          <div>
-            <Image src={productSix} alt="picture of a projec" />
-            <p className="text-xs pt-2" style={{ color: "#121212" }}>
-              {" "}
-              Bo Soft Strap
-            </p>
-            <p className="text-xs" style={{ color: "#121212" }}>
-              $365.00 CAD
-            </p>
-          </div>
-
-          <div>
-            <Image src={productSeven} alt="picture of a projec" />
-            <p className="text-xs pt-2" style={{ color: "#121212" }}>
-              {" "}
-              Bo Soft Strap
-            </p>
-            <p
-              className="text-xs flex items-center space-x-2"
-              style={{ color: "#121212" }}
-            >
-              <span style={{ fontSize: "11px" }} className="line-through">
-                $545.00 CAD
-              </span>
-
-              <span>$195.00 CAD</span>
-            </p>
-          </div>
-
-          <div>
-            <Image src={productEight} alt="picture of a projec" />
-            <p className="text-xs pt-2" style={{ color: "#121212" }}>
-              {" "}
-              Storml{" "}
-            </p>
-            <p className="text-xs " style={{ color: "#121212" }}>
-              <span>$195.00 CAD</span>
-            </p>
-          </div>
-
-          <div>
-            <Image src={productFive} alt="picture of a projec" />
-            <p className="text-xs pt-2" style={{ color: "#121212" }}>
-              {" "}
-              Hobo Small
-            </p>
-            <p
-              className="text-xs flex items-center space-x-2"
-              style={{ color: "#121212" }}
-            >
-              <span style={{ fontSize: "11px" }} className="line-through">
-                $545.00 CAD
-              </span>
-
-              <span>$195.00 CAD</span>
-            </p>
-          </div>
-
-          <div>
-            <Image src={productSix} alt="picture of a projec" />
-            <p className="text-xs pt-2" style={{ color: "#121212" }}>
-              {" "}
-              Bo Soft Strap
-            </p>
-            <p className="text-xs" style={{ color: "#121212" }}>
-              $365.00 CAD
-            </p>
-          </div>
-
-          <div>
-            <Image src={productSeven} alt="picture of a projec" />
-            <p className="text-xs pt-2" style={{ color: "#121212" }}>
-              {" "}
-              Bo Soft Strap
-            </p>
-            <p
-              className="text-xs flex items-center space-x-2"
-              style={{ color: "#121212" }}
-            >
-              <span style={{ fontSize: "11px" }} className="line-through">
-                $545.00 CAD
-              </span>
-
-              <span>$195.00 CAD</span>
-            </p>
-          </div>
-
-          <div>
-            <Image src={productEight} alt="picture of a projec" />
-            <p className="text-xs pt-2" style={{ color: "#121212" }}>
-              {" "}
-              Storml{" "}
-            </p>
-            <p className="text-xs " style={{ color: "#121212" }}>
-              <span>$195.00 CAD</span>
-            </p>
-          </div>
+              <p className="text-sm pt-2" style={{ color: "#121212" }}>
+                {" "}
+                {p.node.title}{" "}
+              </p>
+              <p className="text-sm" style={{ color: "#121212" }}>
+                <span className="">
+                  ${p.node.variants?.edges[0].node.price.amount}
+                </span>
+              </p>
+            </Link>
+          ))}
         </div>
       </div>
     </section>
