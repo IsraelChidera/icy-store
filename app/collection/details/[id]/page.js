@@ -15,8 +15,7 @@ const page = ({ params }) => {
 
   console.log("p", products);
   return (
-    <>
-      <div>collection details id page {params.id} </div>
+    <>      
 
       <section className="mt-14 pb-10 mx-auto max-w-6xl">
         <div className="md:grid grid-cols-4 gap-x-2 gap-y-10">
@@ -123,18 +122,13 @@ const page = ({ params }) => {
             </>
           )}
 
-          {/* {products?.data.collection.products.edges.map((e) => (
-            <>
+          {products?.data.collection.products.edges.map((e) => (
+            <div key={e.node.title}>
               <Link
                 href={`/product/details/${encodeURIComponent(e.node.id)}`}
                 key={e.node.title}
               >
-                <Image
-                  src={e.node.featuredImage?.url}
-                  alt={e.node.title}
-                  width={261}
-                  height={262}
-                />
+                <img src={e?.node?.images?.edges[0].node?.url} alt={e.node.title} />
 
                 <p className="text-xs pt-2" style={{ color: "#121212" }}>
                   {" "}
@@ -144,8 +138,8 @@ const page = ({ params }) => {
                   ${e.node.variants.edges[0].node.price.amount}
                 </p>
               </Link>
-            </>
-          ))} */}
+            </div>
+          ))}
         </div>
       </section>
     </>

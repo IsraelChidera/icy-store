@@ -84,7 +84,7 @@ export default function Page({ params }) {
                 </>
               )}
               <img
-                src={singleProductItem?.data.product.images.edges[0].node.url}
+                src={singleProductItem?.data?.product?.images.edges[0].node.url}
                 alt={singleProductItem?.data?.product?.title}
               />
             </div>
@@ -103,7 +103,7 @@ export default function Page({ params }) {
                   </>
                 )}
                 <img
-                  src={singleProductItem?.data.product.images.edges[0].node.url}
+                  src={singleProductItem?.data?.product?.images?.edges[0].node.url}
                   alt={singleProductItem?.data?.product?.title}
                 />
               </div>
@@ -121,7 +121,7 @@ export default function Page({ params }) {
                   </>
                 )}
                 <img
-                  src={singleProductItem?.data.product.images.edges[0].node.url}
+                  src={singleProductItem?.data?.product?.images?.edges[0].node.url}
                   alt={singleProductItem?.data?.product?.title}
                 />
               </div>
