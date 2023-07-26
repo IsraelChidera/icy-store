@@ -42,14 +42,21 @@ const PopularProducts = () => {
     `;
 
 
-    const { data: collectionProducts, isLoading: loading } = useQuery({
+    const { data: collectionProducts, isLoading: loading, error } = useQuery({
         queryKey: ['collectionWithProducts'],
-        queryFn: async () =>
-            request(
-                'https://mock.shop/api',
-                queryForCollectionProducts,
-                // variables are type-checked too!               
-            ),
+        queryFn: async () => {
+            try {
+                const response = await request(
+                    'https://mock.shop/api',
+                    queryForCollectionProducts,
+                    // variables are type-checked too!               
+                );
+                return response;
+            } catch (error) {
+                return error;
+            }
+        }
+
     });
 
 
@@ -108,9 +115,22 @@ const PopularProducts = () => {
                         </div>
                     </>
                 )}
+                {error && (
+                    <>
+                        <div className="flex justify-center text-center items-center">
+                            <p>
+                                There was an error loading the products. Return to{" "}
+                                <Link href="/" className="underline">
+                                    home
+                                </Link>
+                            </p>
+                        </div>
+                    </>
+                )}
+
                 {
-                    collectionProducts?.products?.edges?.map((p) => (
-                        <Link href={`/product/details/${encodeURIComponent(p.node.id)}`} key={p.node.title} className=''>
+                    collectionProducts?.products?.edges?.map((p,i) => (
+                        <Link href={`/product/details/${encodeURIComponent(p.node.id)}`} key={i}>
                             <img
                                 src={p.node.images?.edges[0].node.url}
                                 alt="picture of a project"

@@ -5,29 +5,6 @@ import collectionThree from '../public/images/stock-collection-three.svg';
 import Image from 'next/image';
 import { BsArrowRight } from 'react-icons/bs';
 import Link from 'next/link';
-import { useQuery } from '@tanstack/react-query';
-import { request, gql } from 'graphql-request';
-
-const queryForCollectionWithProducts = gql`
-{
-    collections(first: 10) {
-      edges {
-        cursor
-        node {
-          id
-          handle
-          title
-          description
-          image {
-            id
-            url
-          }
-        }
-      }
-    }
-  }
-  
-`
 
 const Collection = () => {
 
@@ -45,7 +22,7 @@ const Collection = () => {
                             className='w-full'
                             alt="product"
                         />
-                        <Link href="#" className='pl-4 py-3 inline flex space-x-1 items-center'>
+                        <Link href="/products" className='pl-4 py-3 inline flex space-x-1 items-center'>
                             <span> View collection </span>
                             <BsArrowRight />
                         </Link>
@@ -58,7 +35,7 @@ const Collection = () => {
                                     src={collectionTwo}
                                     alt="product collection"
                                 />
-                                <Link href="#" className='pl-4 py-3 inline flex space-x-1 items-center'>
+                                <Link href="/products" className='pl-4 py-3 inline flex space-x-1 items-center'>
                                     <span> View collection </span>
                                     <BsArrowRight />
                                 </Link>
@@ -69,7 +46,7 @@ const Collection = () => {
                                     src={collectionThree}
                                     alt="product collection"
                                 />
-                                <Link href="#" className='pl-4 py-3 inline flex space-x-1 items-center'>
+                                <Link href="/products" className='pl-4 py-3 inline flex space-x-1 items-center'>
                                     <span> View collection </span>
                                     <BsArrowRight />
                                 </Link>

@@ -8,11 +8,21 @@ import ReactSkeleton from "react-skeleton-state";
 
 const page = () => {
   const { data: products, error, isLoading } = useGetAllProductsQuery();
-
-  console.log(products);
+ 
   return (
     <>
       <section className="mt-14 pb-10 mx-auto max-w-6xl">
+        <div className="mt-10 mb-4 flex items-center justify-between">
+          <h3 className="text-2xl font-bold"> Shop </h3>
+
+          <section className="flex  items-center space-x-3 text-sm">
+            <Link href="/" className="font-bold">
+              Home
+            </Link>{" "}
+            <span style={{ color: "#BDBDBD" }}> {" > "} Shop</span>
+          </section>
+        </div>
+
         <div className="md:grid grid-cols-4 gap-x-2 gap-y-10">
           {isLoading && (
             <>

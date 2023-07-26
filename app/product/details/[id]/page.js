@@ -45,12 +45,29 @@ export default function Page({ params }) {
     error,
   } = useQuery({
     queryKey: ["singleProductPage"],
-    queryFn: async () => request("https://mock.shop/api", query),
+    queryFn: async () => {
+      try {
+        const response = await request("https://mock.shop/api", query);
+        return response;
+      } catch (error) {
+        return error;
+      }
+    },
   });
 
   return (
     <>
       <section className="mx-auto max-w-6xl mt-20 pb-10">
+        <div className="mt-10 mb-4 flex items-center justify-between">
+          <h3 className="text-2xl font-bold">Product Details</h3>
+
+          <section className="flex  items-center space-x-3 text-sm">
+            <Link href="/" className="font-bold">
+              Home
+            </Link>{" "}
+            <span style={{ color: "#BDBDBD" }}> {" > "} Product</span>
+          </section>
+        </div>
         <div className="md:grid grid-cols-6 gap-x-6">
           <div className="col-span-4 space-y-2">
             <div>
@@ -82,7 +99,7 @@ export default function Page({ params }) {
               <img
                 src={singleProductItem?.data?.product?.images.edges[0].node.url}
                 alt={singleProductItem?.data?.product?.title}
-              />             
+              />
             </div>
 
             <div className="flex space-x-2 items-center">
@@ -309,27 +326,25 @@ export default function Page({ params }) {
               </>
             )}
             {products?.products.edges.slice(1, 9).map((e) => (
-              <>
-                <Link
-                  href={`/product/details/${encodeURIComponent(e.node.id)}`}
-                  key={e.node.title}
-                >
-                  <Image
-                    src={e.node.featuredImage?.url}
-                    alt={e.node.title}
-                    width={261}
-                    height={262}
-                  />
+              <Link
+                href={`/product/details/${encodeURIComponent(e.node.id)}`}
+                key={e.node.title}
+              >
+                <Image
+                  src={e.node.featuredImage?.url}
+                  alt={e.node.title}
+                  width={261}
+                  height={262}
+                />
 
-                  <p className="text-xs pt-2" style={{ color: "#121212" }}>
-                    {" "}
-                    {e.node.title}{" "}
-                  </p>
-                  <p className="text-xs" style={{ color: "#121212" }}>
-                    ${e.node.variants.edges[0].node.price.amount}
-                  </p>
-                </Link>
-              </>
+                <p className="text-xs pt-2" style={{ color: "#121212" }}>
+                  {" "}
+                  {e.node.title}{" "}
+                </p>
+                <p className="text-xs" style={{ color: "#121212" }}>
+                  ${e.node.variants.edges[0].node.price.amount}
+                </p>
+              </Link>
             ))}
           </div>
         </div>
