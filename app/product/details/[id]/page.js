@@ -7,6 +7,8 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { request, gql } from "graphql-request";
 import ReactSkeleton from "react-skeleton-state";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/cartSlice";
 
 const query = gql`
   {
@@ -37,6 +39,7 @@ const query = gql`
 `;
 
 export default function Page({ params }) {
+  const dispatch = useDispatch();
   const { data: singleProductItem } = useGetSingleProductQuery(`${params.id}`);
 
   const {
@@ -54,6 +57,16 @@ export default function Page({ params }) {
       }
     },
   });
+  const productArray = singleProductItem?.data.product;
+  
+  const handleAddToCart = (productArray) => {
+    dispatch(addToCart({productArray}));
+  };
+
+  
+  console.log("sp", singleProductItem);
+  console.log("zz", productArray);
+  
 
   return (
     <>
@@ -210,12 +223,12 @@ export default function Page({ params }) {
 
               <div className="mt-3 space-y-2">
                 <div className="flex text-center w-full">
-                  <Link
-                    href="/cart"
+                  <button
+                    onClick={() => handleAddToCart(singleProductItem)}
                     className="text-sm py-2 px-4 w-full border border-black"
                   >
                     Add to cart
-                  </Link>
+                  </button>
                 </div>
 
                 <div>
