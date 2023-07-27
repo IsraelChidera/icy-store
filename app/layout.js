@@ -5,6 +5,8 @@ import { Inter } from "next/font/google";
 import { StoreProvider } from "@/components/StoreProvider";
 import { QueryProvider } from "@/components/QueryProvider";
 import FloatingButton from "@/components/FloatingButton";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +21,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} relative`}>
         <StoreProvider>
           <QueryProvider>
+            <ToastContainer />
             <Navbar />
             <FloatingButton />
             {children}
