@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import cartImage from "../../public/images/cart-image.svg";
-import cartImage1 from "../../public/images/cart-image-1.svg";
-import cartImage2 from "../../public/images/cart-image-2.svg";
-import { AiFillDelete } from "react-icons/ai";
 import { useQuery } from "@tanstack/react-query";
 import { request, gql } from "graphql-request";
 import ReactSkeleton from "react-skeleton-state";
+import CartItems from "@/components/CartItems";
+import EmptyCart from "@/components/EmptyCart";
+import { useSelector } from "react-redux";
 
 const page = () => {
+  const cart = useSelector((state) => state.cart);
+  
   const queryForCollectionProducts = gql`
     {
       products(first: 8, sortKey: CREATED_AT, reverse: true) {
@@ -73,142 +73,10 @@ const page = () => {
         </Link>
       </div>
 
-      <div className="mt-10">
-        <div className="grid text-sm grid-cols-5 gap-x-4 border-b pb-4">
-          <div style={{ color: "#121212" }} className="col-span-3">
-            <p> PRODUCT </p>
-          </div>
-
-          <div
-            style={{ color: "#121212" }}
-            className="col-span-2 flex justify-between items-center"
-          >
-            <p> QUANTITY </p>
-            <p> TOTAL </p>
-          </div>
-        </div>
-
-        <div className="mt-10">
-          <div className="grid grid-cols-5 gap-x-4">
-            <div className="col-span-3 flex items-start space-x-2">
-              <Image src={cartImage} alt="product image added to cart" />
-              <div>
-                <h3 className="text-sm"> Naomi Mini Wallet </h3>
-                <p style={{ color: "#121212" }} className="text-xs">
-                  {" "}
-                  Color: Cotton Candy{" "}
-                </p>
-              </div>
-            </div>
-
-            <div className="col-span-2 flex items-start justify-between">
-              <div className="flex items-center space-x-2">
-                <div>
-                  <button className="border py-1 px-2 flex items-center space-x-12">
-                    <span>-</span>
-
-                    <span className="text-sm"> 1 </span>
-
-                    <span> + </span>
-                  </button>
-                </div>
-
-                <AiFillDelete />
-              </div>
-
-              <div>
-                <p className="text-sm"> $187.00 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-10">
-          <div className="grid grid-cols-5 gap-x-4">
-            <div className="col-span-3 flex items-start space-x-2">
-              <Image src={cartImage2} alt="product image added to cart" />
-              <div>
-                <h3 className="text-sm"> Naomi Mini Wallet </h3>
-                <p style={{ color: "#121212" }} className="text-xs">
-                  {" "}
-                  Color: Cotton Candy{" "}
-                </p>
-              </div>
-            </div>
-
-            <div className="col-span-2 flex items-start justify-between">
-              <div className="flex items-center space-x-2">
-                <div>
-                  <button className="border py-1 px-2 flex items-center space-x-12">
-                    <span>-</span>
-
-                    <span className="text-sm"> 1 </span>
-
-                    <span> + </span>
-                  </button>
-                </div>
-
-                <AiFillDelete />
-              </div>
-
-              <div>
-                <p className="text-sm"> $187.00 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-10">
-          <div className="grid grid-cols-5 gap-x-4">
-            <div className="col-span-3 flex items-start space-x-2">
-              <Image src={cartImage1} alt="product image added to cart" />
-              <div>
-                <h3 className="text-sm"> Naomi Mini Wallet </h3>
-                <p style={{ color: "#121212" }} className="text-xs">
-                  {" "}
-                  Color: Cotton Candy{" "}
-                </p>
-              </div>
-            </div>
-
-            <div className="col-span-2 flex items-start justify-between">
-              <div className="flex items-center space-x-2">
-                <div>
-                  <button className="border py-1 px-2 flex items-center space-x-12">
-                    <span>-</span>
-
-                    <span className="text-sm"> 1 </span>
-
-                    <span> + </span>
-                  </button>
-                </div>
-
-                <AiFillDelete />
-              </div>
-
-              <div>
-                <p className="text-sm"> $187.00 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex justify-end text-right mt-20 w-full">
-          <div className="space-y-2">
-            <p className="text-xs"> Subtotal: $561.00 CAD </p>
-            <p style={{ fontSize: "10px" }}>
-              {" "}
-              Taxes and shipping calculated at checkout{" "}
-            </p>
-            <button className="py-2 text-sm bg-black text-white w-full">
-              Checkout
-            </button>
-          </div>
-        </div>
-      </div>
+      <div>{cart.cartItems.length === 0 ? <EmptyCart /> : <CartItems />}</div>
 
       <div className="mt-20">
-        <p className="text-xl"> You may also like </p>
+        <p className="text-xl uppercase"> Recommended for you </p>
 
         <div className="mt-10 md:grid grid-cols-4 gap-x-4 gap-y-28 ">
           {loading && (

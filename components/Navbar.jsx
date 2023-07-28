@@ -1,16 +1,17 @@
-
+'use client'
 
 import Link from 'next/link'
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     FaShoppingCart,
 } from 'react-icons/fa';
-import {
-    AiFillHeart,
-} from 'react-icons/ai';
+
+import {  useSelector } from 'react-redux';
 
 
 const navbar = () => {
+    const {cartTotalQuantity} = useSelector((state) => state.cart); 
+
     return (
         <>
             <nav className='mx-auto max-w-6xl px-2 pt-4 pb-4 grid grid-cols-2'>
@@ -44,7 +45,7 @@ const navbar = () => {
                     <ul>
                         <li className='relative'>
                             <p className='absolute -top-2 -right-2 text-xs'>
-                                1
+                                {cartTotalQuantity}
                             </p>
                             <Link href="/cart">
                                 <FaShoppingCart className='w-5 h-5' />
