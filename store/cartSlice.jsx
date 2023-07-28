@@ -1,11 +1,20 @@
-"use client";
+'use client'
+
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
+const getCartItemsFromLocalStorage = () => {
+  if (typeof window !== 'undefined') {
+    const cartItemsFromLocalStorage = localStorage.getItem("cartItems");
+    return cartItemsFromLocalStorage ? JSON.parse(cartItemsFromLocalStorage) : [];
+  } else {
+    return [];
+  }
+};
+
+
 const initialState = {
-  cartItems: localStorage.getItem("cartItems")
-    ? JSON.parse(localStorage.getItem("cartItems"))
-    : [],
+  cartItems: getCartItemsFromLocalStorage(),
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
 };
