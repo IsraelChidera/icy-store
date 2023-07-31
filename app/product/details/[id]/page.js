@@ -67,29 +67,30 @@ export default function Page({ params }) {
 
   return (
     <>
-      <section className="mx-auto max-w-6xl mt-20 pb-10">
+      <section className="mx-auto px-3 md:max-w-6xl mt-20 pb-10">
         <div className="mt-10 mb-4 flex items-center justify-between">
-          <h3 className="text-2xl font-bold">Product Details</h3>
+          <h3 className="sm:text-2xl text-base font-bold">Product Details</h3>
 
-          <section className="flex  items-center space-x-3 text-sm">
+          <section className="flex items-center space-x-3 text-xs md:text-sm">
             <Link href="/" className="font-bold">
               Home
             </Link>{" "}
             <span style={{ color: "#BDBDBD" }}> {" > "} Product</span>
           </section>
         </div>
+
         <div className="md:grid grid-cols-6 gap-x-6">
           <div className="col-span-4 space-y-2">
             <div>
               {isLoading && (
                 <>
-                  <div>
+                  <div className="hidden md:block">
                     <ReactSkeleton
                       width={760}
                       height={760}
                       variant="rectangle"
                     ></ReactSkeleton>
-                    <div className="mt-1 pt-2">
+                    {/* <div className="mt-1 pt-2">
                       <ReactSkeleton
                         width={200}
                         fontSize={"1rem"}
@@ -102,17 +103,54 @@ export default function Page({ params }) {
                         fontSize={"1rem"}
                         variant="text"
                       ></ReactSkeleton>
-                    </div>
+                    </div> */}
                   </div>
                 </>
               )}
+
+              {isLoading && (
+                <>
+                  <div className="hidden md:block">
+                    <ReactSkeleton
+                      width={300}
+                      height={300}
+                      variant="rectangle"
+                    ></ReactSkeleton>
+                  </div>
+                </>
+              )}
+
               <img
                 src={singleProductItem?.data?.product?.images.edges[0].node.url}
                 alt={singleProductItem?.data?.product?.title}
               />
             </div>
 
-            <div className="flex space-x-2 items-center">
+            {error && (
+              <>
+                <div
+                  style={{ height: "50vh" }}
+                  className="flex justify-center md:text-base text-xs sm:text-sm text-center "
+                >
+                  <p>
+                    There was an error loading the products. Click{" "}
+                    <span
+                      onClick={() => location.reload()}
+                      className="underline"
+                    >
+                      here
+                    </span>{" "}
+                    to refresh or return to{" "}
+                    <Link href="/" className="underline">
+                      {" "}
+                      Home{" "}
+                    </Link>
+                  </p>
+                </div>
+              </>
+            )}
+
+            <div className="hidden md:flex space-x-2 items-center">
               <div>
                 {isLoading && (
                   <>
@@ -155,7 +193,7 @@ export default function Page({ params }) {
             </div>
           </div>
 
-          <div className="col-span-2 ">
+          <div className="col-span-2 mt-4 md:mt-0 ">
             <div className="space-y-4">
               {isLoading && (
                 <>
@@ -177,7 +215,7 @@ export default function Page({ params }) {
                   </div>
                 </>
               )}
-              <h1 className="text-2xl">
+              <h1 className="text-base md:text-2xl">
                 {" "}
                 {singleProductItem?.data?.product?.title}{" "}
               </h1>
@@ -195,7 +233,7 @@ export default function Page({ params }) {
                   </div>
                 </>
               )}
-              <p className="text-sm">
+              <p className="text-xs md:text-sm">
                 {" "}
                 $
                 {
@@ -206,9 +244,9 @@ export default function Page({ params }) {
             </div>
 
             <div className="mt-6">
-              <p className="text-xs">Quantity</p>
+              <p className="hidden text-xs">Quantity</p>
 
-              <div className="mt-3">
+              <div className="hidden mt-3">
                 <button className="border py-1 px-2 flex items-center space-x-12">
                   <span>-</span>
 
@@ -235,7 +273,7 @@ export default function Page({ params }) {
                 </div>
               </div>
 
-              <p className="mt-6 text-sm">
+              <p className="mt-6 text-xs md:text-sm">
                 {singleProductItem?.data?.product?.description}
               </p>
             </div>
@@ -245,12 +283,12 @@ export default function Page({ params }) {
         <div className="mt-20">
           <p className="text-xl"> You may also like </p>
 
-          <div className="md:grid grid-cols-4 gap-x-2 gap-y-10">
+          <div className="grid grid-cols-1 sm:grid sm:grid-cols-1 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2  gap-y-10">
             {isLoading && (
               <>
                 <div>
                   <ReactSkeleton
-                    width={280}
+                    width={300}
                     height={328}
                     variant="rectangle"
                   ></ReactSkeleton>
@@ -335,6 +373,9 @@ export default function Page({ params }) {
                 </div>
               </>
             )}
+          </div>
+
+          <div className="mt-4 md:mt-0 grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2  gap-y-10">
             {products?.products.edges.slice(1, 9).map((e) => (
               <Link
                 href={`/product/details/${encodeURIComponent(e.node.id)}`}

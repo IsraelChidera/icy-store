@@ -43,7 +43,7 @@ const page = () => {
             </div>
           </>
         )}
-        
+
         <div className="grid grid-cols-1 sm:grid sm:grid-cols-1 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2  gap-y-10">
           {isLoading && (
             <>
@@ -135,6 +135,7 @@ const page = () => {
             </>
           )}
         </div>
+        
         <div className="grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2 gap-y-10">
           {products?.data.products.edges.map((e) => (
             <>
