@@ -9,7 +9,7 @@ import { request, gql } from "graphql-request";
 import ReactSkeleton from "react-skeleton-state";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cartSlice";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 const query = gql`
   {
@@ -61,7 +61,8 @@ export default function Page({ params }) {
   });
 
   const handleAddToCart = (productArray) => {
-    dispatch(addToCart({ productArray }));    
+    dispatch(addToCart({ productArray }));
+    router.push("/cart");
   };
 
   return (

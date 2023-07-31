@@ -11,11 +11,11 @@ const Collection = () => {
 
     
     return (
-        <section className='mx-auto max-w-6xl mt-20 pb-10'>
-            <p className='text-xl'> Back in Stock</p>
+        <section className='md:mx-auto mx-3 md:max-w-6xl mt-20 pb-10'>
+            <p className='md:text-xl md:font-normal font-semibold'> Back in Stock</p>
 
-            <div className='mt-6'>
-                <div className='md:grid grid-cols-6 gap-x-4'>
+            <div className='md:mt-6 mt-3'>
+                <div className='md:grid grid-cols-6 md:space-y-0 md:space-y-10 space-y-2 gap-x-4'>
                     <div style={{ background: "#f0f0f0" }} className='col-span-4 relative'>                        
                         <Image
                             src={collectionOne}
@@ -23,20 +23,20 @@ const Collection = () => {
                             alt="product"
                         />
                         <Link href="/products" className='pl-4 py-3 inline flex space-x-1 items-center'>
-                            <span> View collection </span>
+                            <span className='md:text-base text-sm'> View collection </span>
                             <BsArrowRight />
                         </Link>
                     </div>
 
                     <div className='col-span-2 '>
-                        <div className='flex flex-col justify-between'>
-                            <div>
+                        <div className='flex md:flex-col space-x-2 md:space-x-0 justify-between'>
+                            <div style={{ background: "#f6f6f6" }} className='md:block flex flex-col justify-end relative'>
                                 <Image
                                     src={collectionTwo}
                                     alt="product collection"
                                 />
                                 <Link href="/products" className='pl-4 py-3 inline flex space-x-1 items-center'>
-                                    <span> View collection </span>
+                                    <span className='md:text-base text-sm'> View collection </span>
                                     <BsArrowRight />
                                 </Link>
                             </div>

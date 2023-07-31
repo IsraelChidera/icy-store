@@ -71,3 +71,41 @@ body {
   height: 242px;
   width: 239px;
 }
+
+@media only screen and (max-width: 767px) {
+  .collection-one {
+    background: url("../public/images/collectionOne.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+  }
+
+  .collection-two {
+    background: url("../public/images/collectionTwoMobile.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .collection-three {
+    background: url("../public/images/collectionThree.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .collection-four {
+    background: url("../public/images/collectionFour.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    width: 100%;
+  }
+}

@@ -8,10 +8,10 @@ import ReactSkeleton from "react-skeleton-state";
 
 const page = () => {
   const { data: products, error, isLoading } = useGetAllProductsQuery();
- 
+
   return (
     <>
-      <section className="mt-14 pb-10 mx-auto max-w-6xl">
+      <section className="mt-14 pb-10 md:mx-auto md:max-w-6xl">
         <div className="mt-10 mb-4 flex items-center justify-between">
           <h3 className="text-2xl font-bold"> Shop </h3>
 
@@ -22,6 +22,20 @@ const page = () => {
             <span style={{ color: "#BDBDBD" }}> {" > "} Shop</span>
           </section>
         </div>
+
+        {error && (
+          <>
+            <div className="flex justify-center md:text-base text-sm text-center items-center">
+              <p>
+                There was an error loading the products. Click{" "}
+                <span onClick={() => location.reload()} className="underline">
+                  here
+                </span>{" "}
+                to refresh or return to <Link href="/" className="underline"> Home </Link>
+              </p>
+            </div>
+          </>
+        )}
 
         <div className="md:grid grid-cols-4 gap-x-2 gap-y-10">
           {isLoading && (
@@ -110,19 +124,6 @@ const page = () => {
                     variant="text"
                   ></ReactSkeleton>
                 </div>
-              </div>
-            </>
-          )}
-
-          {error && (
-            <>
-              <div className="flex justify-center text-center items-center">
-                <p>
-                  There was an error loading the products. Return to{" "}
-                  <Link href="/" className="underline">
-                    home
-                  </Link>
-                </p>
               </div>
             </>
           )}

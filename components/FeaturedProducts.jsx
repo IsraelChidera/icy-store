@@ -58,19 +58,19 @@ const FeaturedProducts = () => {
 
     return (
         <section className='mt-20 pb-10'>
-            <div className='mx-auto w-1/2 text-center'>
-                <p className='text-sm'>
+            <div className='mx-auto md:w-1/2 text-center'>
+                <p className='md:text-sm text-xs'>
                     Featured Products
                 </p>
-                <h2 className='font-bold text-xl'>
+                <h2 className='font-bold md:text-xl'>
                     BESTSELLER PRODUCTS
                 </h2>
             </div>
 
 
-            <div className='mt-14 mx-auto max-w-6xl'>
+            <div className='sm:mt-14 mt-4 md:mx-auto md:px-0 px-3 md:max-w-6xl'>
                 <div>
-                    <div className='md:grid grid-cols-4 gap-x-2 gap-y-10'>
+                    <div className='grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2  gap-y-10'>
                         {isLoading && (
                             <>
                                 <div>
@@ -127,14 +127,14 @@ const FeaturedProducts = () => {
                         )}
 
                         {
-                            products?.products.edges.map((e,i) => (
+                            products?.products.edges.map((e, i) => (
 
-                                <Link href={`/product/details/${encodeURIComponent(e.node.id)}`} key={i}>
-                                    <Image
+                                <Link  href={`/product/details/${encodeURIComponent(e.node.id)}`} key={i}>                                  
+
+                                    <img
                                         src={e.node.featuredImage?.url}
-                                        alt={e.node.title}
-                                        width={261}
-                                        height={262}
+                                        alt={e.node.title}                                        
+                                        className=''
                                     />
 
                                     <p className='text-xs pt-2' style={{ color: "#121212" }}> {e.node.title} </p>

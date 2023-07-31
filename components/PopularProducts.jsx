@@ -62,18 +62,18 @@ const PopularProducts = () => {
 
 
     return (
-        <section className='mx-auto max-w-6xl mt-20 pb-10'>
-            <div className='mx-auto w-1/2 text-center'>
-                <p className='text-sm'>
+        <section className='md:mx-auto px-1 sm:mx-3 md:max-w-6xl mt-20 pb-10'>
+            <div className='mx-auto md:w-1/2 text-center'>
+                <p className='text-xs md:text-sm'>
                     Popular Products
                 </p>
-                <h2 className='font-bold text-xl'>
+                <h2 className='font-bold md:text-xl'>
                     LIMITED STOCK DEALS
                 </h2>
             </div>
 
 
-            <div className='mt-10 md:grid grid-cols-4 gap-x-4 gap-y-28 '>
+            <div className='md:mt-10 mt-4 grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-y-10 lg:gap-y-20 md:gap-y-28  '>
                 {loading && (
                     <>
                         <div>
@@ -118,7 +118,7 @@ const PopularProducts = () => {
                 {error && (
                     <>
                         <div className="flex justify-center text-center items-center">
-                            <p>
+                            <p className='text-xs md:text-sm'>
                                 There was an error loading the products. Return to{" "}
                                 <Link href="/" className="underline">
                                     home
@@ -137,8 +137,8 @@ const PopularProducts = () => {
                                 className='h-full w-full'
                             />
 
-                            <p className='text-sm pt-2' style={{ color: "#121212" }}> {p.node.title} </p>
-                            <p className='text-sm' style={{ color: "#121212" }}>
+                            <p className='text-xs md:text-sm pt-2' style={{ color: "#121212" }}> {p.node.title} </p>
+                            <p className='text-xs md:text-sm' style={{ color: "#121212" }}>
                                 <span className=''>
                                     ${p.node.variants?.edges[0].node.price.amount}
                                 </span>

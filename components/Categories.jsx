@@ -43,19 +43,19 @@ const Categories = () => {
     });
 
     return (
-        <section className='mt-20 pb-10'>
+        <section className='mt-20  pb-10'>
 
-            <div className='mx-auto w-1/2 text-center'>
-                <h2 className='font-bold text-xl'>
+            <div className='mx-auto md:w-1/2 text-center'>
+                <h2 className='font-bold md:text-xl'>
                     YOUR FAVOURITE COLLECTION
                 </h2>
-                <p className='text-sm'>
+                <p className='text-xs md:text-sm'>
                     We give obsessive attention with an intelligent effort.
                 </p>
             </div>
 
-            <div className='mt-10 w-3/4 mx-auto '>
-                <div className='md:grid grid-cols-4 gap-x-4 '>
+            <div className='mt-10 md:px-4 md:px-0 md:w-3/4 mx-4 md:mx-auto '>
+                <div className='md:grid md:grid-cols-4 gap-x-4 '>
                     <div className='collection-one col-span-2 relative'>
                         {error && (
                             <>
@@ -73,7 +73,7 @@ const Categories = () => {
                         {
                             collections?.collections?.edges.slice(0, 1).map((c,i) => (
                                 <div key={i}>
-                                    <Image src={c.node.image.url} alt={c.node.title} fill={true} />
+                                    <Image className='' src={c.node.image.url} alt={c.node.title} fill={true} />
 
                                     <span className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4'>
                                         {c.node.title}
@@ -89,7 +89,7 @@ const Categories = () => {
                         }
                     </div>
 
-                    <div className='collection-two relative'>
+                    <div className='collection-two md:block hidden relative'>
                         {
                             collections?.collections?.edges.slice(1, 2).map((c,i) => (
                                 <div key={i}>
@@ -109,8 +109,8 @@ const Categories = () => {
 
                     </div>
 
-                    <div className='flex flex-col space-y-4 justify-between items-'>
-                        <div className='collection-three relative'>
+                    <div className='md:flex grid grid-cols-2 gap-x-4 md:flex-col md:space-y-4 md:justify-between'>
+                        <div className=' collection-three relative'>
                             {
                                 collections?.collections?.edges.slice(2, 3).map((c) => (
                                     <>
@@ -130,7 +130,7 @@ const Categories = () => {
                             }
                         </div>
 
-                        <div className='collection-four relative'>
+                        <div className=' collection-four relative'>
                             {
                                 collections?.collections?.edges.slice(3, 4).map((c) => (
                                     <>

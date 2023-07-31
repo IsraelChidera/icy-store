@@ -3,9 +3,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-const getCartItemsFromLocalStorage = () => {
+const getCartItemsFromLocalStorage =  () => {
   if (typeof window !== 'undefined') {
-    const cartItemsFromLocalStorage = localStorage.getItem("cartItems");
+    const cartItemsFromLocalStorage =  localStorage.getItem("cartItems");
     return cartItemsFromLocalStorage ? JSON.parse(cartItemsFromLocalStorage) : [];
   } else {
     return [];
@@ -61,7 +61,11 @@ const cartSlice = createSlice({
             theme: "dark",
           }
         );
+
+        
       }
+
+      
 
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
@@ -140,8 +144,7 @@ const cartSlice = createSlice({
               .amount;
           const cartQuantity = cartItem.cartQuantity;
           //{price, cartQuantity} = cartItem;
-          const itemTotal = price * cartQuantity;
-          console.log(price, cartQuantity);
+          const itemTotal = price * cartQuantity;          
 
           cartTotal.total += itemTotal;
           cartTotal.quantity += cartQuantity;

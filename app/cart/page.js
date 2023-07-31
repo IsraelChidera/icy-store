@@ -66,7 +66,7 @@ const page = () => {
   return (
     <section className="mx-auto max-w-6xl mt-20 pb-10">
       <div className="flex items-end justify-between">
-        <h1 className="text-2xl"> Your Cart </h1>
+        <h1 className="text-lg"> Your Cart </h1>
 
         <Link href="/products" className="text-xs underline underline-offset">
           Continue shopping

@@ -31,7 +31,7 @@ const FloatingButton = () => {
 
     return (
         <button
-            className={`fixed bottom-4 right-10 p-6 z-10 drop-shadow-2xl rounded-full bg-black text-white ${showButton ? 'block' : 'hidden'}`}
+            className={`fixed bottom-4 md:right-10 right-4 p-4 md:p-6 z-10 drop-shadow-2xl rounded-full bg-black text-white ${showButton ? 'block' : 'hidden'}`}
             onClick={scrollToTop}
         >
             <BsArrowUp />
