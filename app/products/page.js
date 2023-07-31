@@ -11,11 +11,11 @@ const page = () => {
 
   return (
     <>
-      <section className="mt-14 pb-10 md:mx-auto md:max-w-6xl">
+      <section className="mt-14 pb-10 px-4 md:mx-auto md:max-w-6xl">
         <div className="mt-10 mb-4 flex items-center justify-between">
-          <h3 className="text-2xl font-bold"> Shop </h3>
+          <h3 className="sm:text-2xl font-bold"> Shop </h3>
 
-          <section className="flex  items-center space-x-3 text-sm">
+          <section className="flex items-center space-x-3 text-xs sm:text-sm">
             <Link href="/" className="font-bold">
               Home
             </Link>{" "}
@@ -25,24 +25,31 @@ const page = () => {
 
         {error && (
           <>
-            <div className="flex justify-center md:text-base text-sm text-center items-center">
+            <div
+              style={{ height: "50vh" }}
+              className="flex justify-center md:text-base text-xs sm:text-sm text-center "
+            >
               <p>
                 There was an error loading the products. Click{" "}
                 <span onClick={() => location.reload()} className="underline">
                   here
                 </span>{" "}
-                to refresh or return to <Link href="/" className="underline"> Home </Link>
+                to refresh or return to{" "}
+                <Link href="/" className="underline">
+                  {" "}
+                  Home{" "}
+                </Link>
               </p>
             </div>
           </>
         )}
-
-        <div className="md:grid grid-cols-4 gap-x-2 gap-y-10">
+        
+        <div className="grid grid-cols-1 sm:grid sm:grid-cols-1 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2  gap-y-10">
           {isLoading && (
             <>
               <div>
                 <ReactSkeleton
-                  width={280}
+                  width={300}
                   height={328}
                   variant="rectangle"
                 ></ReactSkeleton>
@@ -127,7 +134,8 @@ const page = () => {
               </div>
             </>
           )}
-
+        </div>
+        <div className="grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2 gap-y-10">
           {products?.data.products.edges.map((e) => (
             <>
               <Link

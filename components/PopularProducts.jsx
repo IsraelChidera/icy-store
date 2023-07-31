@@ -72,8 +72,7 @@ const PopularProducts = () => {
                 </h2>
             </div>
 
-
-            <div className='md:mt-10 mt-4 grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-y-10 lg:gap-y-20 md:gap-y-28  '>
+            <div className='grid grid-cols-1 sm:grid sm:grid-cols-1 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2  gap-y-10'>
                 {loading && (
                     <>
                         <div>
@@ -115,6 +114,9 @@ const PopularProducts = () => {
                         </div>
                     </>
                 )}
+            </div>
+            <div className='md:mt-10 mt-4 grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-y-10 lg:gap-y-20 md:gap-y-28  '>
+
                 {error && (
                     <>
                         <div className="flex justify-center text-center items-center">
@@ -129,7 +131,7 @@ const PopularProducts = () => {
                 )}
 
                 {
-                    collectionProducts?.products?.edges?.map((p,i) => (
+                    collectionProducts?.products?.edges?.map((p, i) => (
                         <Link href={`/product/details/${encodeURIComponent(p.node.id)}`} key={i}>
                             <img
                                 src={p.node.images?.edges[0].node.url}

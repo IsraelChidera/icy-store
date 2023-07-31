@@ -70,11 +70,12 @@ const FeaturedProducts = () => {
 
             <div className='sm:mt-14 mt-4 md:mx-auto md:px-0 px-3 md:max-w-6xl'>
                 <div>
-                    <div className='grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2  gap-y-10'>
+
+                    <div className='grid grid-cols-1 sm:grid sm:grid-cols-1 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2  gap-y-10'>
                         {isLoading && (
                             <>
                                 <div>
-                                    <ReactSkeleton width={280} height={328} variant="rectangle"></ReactSkeleton>
+                                    <ReactSkeleton width={300} height={328} variant="rectangle"></ReactSkeleton>
                                     <div className="mt-1 pt-2">
                                         <ReactSkeleton width={200} fontSize={"1rem"} variant="text"></ReactSkeleton>
                                     </div>
@@ -112,7 +113,9 @@ const FeaturedProducts = () => {
                                 </div>
                             </>
                         )}
-
+                    </div>
+                    <div className='grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2  gap-y-10'>
+                        
                         {error && (
                             <>
                                 <div className="flex justify-center text-center items-center">
@@ -129,11 +132,11 @@ const FeaturedProducts = () => {
                         {
                             products?.products.edges.map((e, i) => (
 
-                                <Link  href={`/product/details/${encodeURIComponent(e.node.id)}`} key={i}>                                  
+                                <Link href={`/product/details/${encodeURIComponent(e.node.id)}`} key={i}>
 
                                     <img
                                         src={e.node.featuredImage?.url}
-                                        alt={e.node.title}                                        
+                                        alt={e.node.title}
                                         className=''
                                     />
 
