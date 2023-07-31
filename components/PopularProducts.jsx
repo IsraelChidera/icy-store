@@ -115,8 +115,8 @@ const PopularProducts = () => {
                     </>
                 )}
             </div>
-            <div className='md:mt-10 mt-4 grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-y-10 lg:gap-y-20 md:gap-y-28  '>
 
+            <div className='md:mt-10 mt-4 grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-4 gap-y-16 sm:gap-y-10 lg:gap-y-20 md:gap-y-28  '>
                 {error && (
                     <>
                         <div className="flex justify-center text-center items-center">

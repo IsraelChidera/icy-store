@@ -64,7 +64,7 @@ const page = () => {
   });
 
   return (
-    <section className="mx-auto max-w-6xl mt-20 pb-10">
+    <section className="px-3 md:mx-auto md:max-w-6xl mt-20 pb-10">
       <div className="flex items-end justify-between">
         <h1 className="text-lg"> Your Cart </h1>
 
@@ -73,7 +73,7 @@ const page = () => {
         </Link>
       </div>
 
-      <div>{cart.cartItems.length === 0 ? <EmptyCart /> : <CartItems />}</div>
+      <div>{cart?.cartItems?.length >  0 ?  <CartItems /> : <EmptyCart />}</div>
 
       <div className="mt-20">
         <p className="text-xl uppercase"> Recommended for you </p>
