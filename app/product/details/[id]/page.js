@@ -61,8 +61,7 @@ export default function Page({ params }) {
   });
 
   const handleAddToCart = (productArray) => {
-    dispatch(addToCart({ productArray }));
-    router.push("/cart");
+    dispatch(addToCart({ productArray }));   
   };
 
   return (
