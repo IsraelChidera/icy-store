@@ -45,7 +45,7 @@ const navbar = () => {
                     <ul>
                         <li className='relative'>
                             <p className='absolute -top-2 -right-2 text-xs'>
-                                {/* {cartTotalQuantity} */}
+                                {cartTotalQuantity}
                             </p>
                             <Link href="/cart">
                                 <FaShoppingCart className='w-5 h-5' />
