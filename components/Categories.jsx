@@ -112,8 +112,8 @@ const Categories = () => {
                     <div className='md:flex grid grid-cols-2 gap-x-4 md:flex-col md:space-y-4 md:justify-between'>
                         <div className=' collection-three relative'>
                             {
-                                collections?.collections?.edges.slice(2, 3).map((c) => (
-                                    <>
+                                collections?.collections?.edges.slice(2, 3).map((c,i) => (
+                                    <div key={i}>
                                         <Image src={c.node.image.url} alt={c.node.title} fill={true} />
 
                                         <span className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4' href={`collections/${c.node.id}`}>
@@ -125,15 +125,15 @@ const Categories = () => {
                                             <span>Shop now</span>
                                             <BsArrowUpRight />
                                         </Link>
-                                    </>
+                                    </div>
                                 ))
                             }
                         </div>
 
                         <div className=' collection-four relative'>
                             {
-                                collections?.collections?.edges.slice(3, 4).map((c) => (
-                                    <>
+                                collections?.collections?.edges.slice(3, 4).map((c, i) => (
+                                    <div key={i}>
                                         <Image src={c.node.image.url} alt={c.node.title} fill={true} />
 
                                         <span className='drop-shadow-xl font-bold text-black absolute bottom-8 left-8 text-2xl decoration-4'>
@@ -145,7 +145,7 @@ const Categories = () => {
                                             <span>Shop now</span>
                                             <BsArrowUpRight />
                                         </Link>
-                                    </>
+                                    </div>
                                 ))
                             }
                         </div>
