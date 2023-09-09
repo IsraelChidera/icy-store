@@ -62,7 +62,7 @@ const Categories = () => {
                                 <div className="flex justify-center text-center items-center">
                                     <p>
                                         There was an error loading the products. Return to{" "}
-                                        <Link href="/" className="underline">
+                                        <Link prefetch href="/" className="underline">
                                             home
                                         </Link>
                                     </p>
@@ -79,7 +79,7 @@ const Categories = () => {
                                         {c.node.title}
                                     </span>
 
-                                    <Link href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                    <Link prefetch href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
                                     >
                                         <span>Shop now</span>
                                         <BsArrowUpRight />
@@ -98,7 +98,7 @@ const Categories = () => {
                                         {c.node.title}
                                     </span>
 
-                                    <Link href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                    <Link prefetch href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
                                     >
                                         <span >Shop now</span>
                                         <BsArrowUpRight />
@@ -120,7 +120,7 @@ const Categories = () => {
                                             {c.node.title}
                                         </span>
 
-                                        <Link href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                        <Link prefetch href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
                                         >
                                             <span>Shop now</span>
                                             <BsArrowUpRight />
@@ -140,7 +140,7 @@ const Categories = () => {
                                             {c.node.title}
                                         </span>
 
-                                        <Link href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
+                                        <Link prefetch href={`/collection/details/${encodeURIComponent(c.node.id)}`} className='text-black flex items-center space-x-2 font-bold border border-black rounded-2xl absolute top-6 right-6 px-4 py-2 text-xs'
                                         >
                                             <span>Shop now</span>
                                             <BsArrowUpRight />

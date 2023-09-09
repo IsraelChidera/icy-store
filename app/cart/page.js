@@ -68,7 +68,7 @@ const page = () => {
       <div className="flex items-end justify-between">
         <h1 className="text-lg"> Your Cart </h1>
 
-        <Link href="/products" className="text-xs underline underline-offset">
+        <Link prefetch href="/products" className="text-xs underline underline-offset">
           Continue shopping
         </Link>
       </div>
@@ -173,7 +173,7 @@ const page = () => {
               <div className="flex justify-center text-center items-center">
                 <p>
                   There was an error loading the products. Return to{" "}
-                  <Link href="/" className="underline">
+                  <Link prefetch href="/" className="underline">
                     home
                   </Link>
                 </p>
@@ -182,7 +182,7 @@ const page = () => {
           )}
 
           {collectionProducts?.products?.edges?.map((p, i) => (
-            <Link
+            <Link prefetch
               href={`/product/details/${encodeURIComponent(p.node.id)}`}
               key={i}
             >

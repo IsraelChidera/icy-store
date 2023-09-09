@@ -12,8 +12,7 @@ import { motion } from 'framer-motion';
 
 const navbar = () => {
 
-    const { cartTotalQuantity } = useSelector((state) => state.cart);
-    console.log(cartTotalQuantity);
+    const { cartTotalQuantity } = useSelector((state) => state.cart); 
 
     const links = [
         { href: "/", label: "Home" },
@@ -26,7 +25,7 @@ const navbar = () => {
         <>
             <nav className='mx-auto max-w-6xl px-2 md:px-2 pt-4 pb-4 grid grid-cols-2'>
                 <div className='flex items-center space-x-20'>
-                    <Link href="/" className='logo-span md:text-2xl text-sm'>
+                    <Link prefetch href="/" className='logo-span md:text-2xl text-sm'>
                         Iccy Store
                     </Link>
 
@@ -34,7 +33,7 @@ const navbar = () => {
 
                         {links.map((link, i) => (
                             <li key={i}>
-                                <Link href={link.href} className='relative'>
+                                <Link prefetch href={link.href} className='relative'>
                                     {link.href === path && (
                                         <motion.span
                                             layoutId="underline"
@@ -55,7 +54,7 @@ const navbar = () => {
                             <p className='absolute -top-2 -right-2 text-xs'>
                                 {cartTotalQuantity > 0 && cartTotalQuantity}
                             </p>
-                            <Link href="/cart">
+                            <Link prefetch href="/cart">
                                 <FaShoppingCart className='w-5 h-5' />
                             </Link>
                         </li>

@@ -121,7 +121,7 @@ const FeaturedProducts = () => {
                                 <div className="flex justify-center text-center items-center">
                                     <p>
                                         There was an error loading the products. Return to{" "}
-                                        <Link href="/" className="underline">
+                                        <Link prefetch href="/" className="underline">
                                             home
                                         </Link>
                                     </p>
@@ -132,7 +132,7 @@ const FeaturedProducts = () => {
                         {
                             products?.products.edges.map((e, i) => (
 
-                                <Link href={`/product/details/${encodeURIComponent(e.node.id)}`} key={i}>
+                                <Link prefetch href={`/product/details/${encodeURIComponent(e.node.id)}`} key={i}>
 
                                     <img
                                         src={e.node.featuredImage?.url}

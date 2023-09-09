@@ -16,7 +16,7 @@ const page = () => {
           <h3 className="sm:text-2xl font-bold"> Shop </h3>
 
           <section className="flex items-center space-x-3 text-xs sm:text-sm">
-            <Link href="/" className="font-bold">
+            <Link prefetch href="/" className="font-bold">
               Home
             </Link>{" "}
             <span style={{ color: "#BDBDBD" }}> {" > "} Shop</span>
@@ -35,7 +35,7 @@ const page = () => {
                   here
                 </span>{" "}
                 to refresh or return to{" "}
-                <Link href="/" className="underline">
+                <Link  prefetch href="/" className="underline">
                   {" "}
                   Home{" "}
                 </Link>
@@ -139,7 +139,7 @@ const page = () => {
         <div className="grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2 gap-y-10">
           {products?.data.products.edges.map((e) => (
             <>
-              <Link
+              <Link prefetch
                 href={`/product/details/${encodeURIComponent(e.node.id)}`}
                 key={e.node.title}
               >

@@ -71,7 +71,7 @@ export default function Page({ params }) {
           <h3 className="sm:text-2xl text-base font-bold">Product Details</h3>
 
           <section className="flex items-center space-x-3 text-xs md:text-sm">
-            <Link href="/" className="font-bold">
+            <Link prefetch href="/" className="font-bold">
               Home
             </Link>{" "}
             <span style={{ color: "#BDBDBD" }}> {" > "} Product</span>
@@ -140,7 +140,7 @@ export default function Page({ params }) {
                       here
                     </span>{" "}
                     to refresh or return to{" "}
-                    <Link href="/" className="underline">
+                    <Link prefetch href="/" className="underline">
                       {" "}
                       Home{" "}
                     </Link>
@@ -376,7 +376,7 @@ export default function Page({ params }) {
 
           <div className="mt-4 md:mt-0 grid grid-cols-2 sm:grid grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-x-2  gap-y-10">
             {products?.products.edges.slice(1, 9).map((e) => (
-              <Link
+              <Link prefetch
                 href={`/product/details/${encodeURIComponent(e.node.id)}`}
                 key={e.node.title}
               >

@@ -10,7 +10,7 @@ const Footer = () => {
             </p>
 
             <div className='pt-2 md:pt-0'>
-                <Link href="#" className='flex justify-center md:justify-between space-x-2 md:items-center text-xs underline underline-offset-4'>
+                <Link prefetch href="#" className='flex justify-center md:justify-between space-x-2 md:items-center text-xs underline underline-offset-4'>
                     <span>
                         Made with
                     </span>{' '}

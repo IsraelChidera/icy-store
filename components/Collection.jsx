@@ -15,14 +15,14 @@ const Collection = () => {
             <p className='md:text-xl md:font-normal font-semibold'> Back in Stock</p>
 
             <div className='md:mt-6 mt-3'>
-                <div className='md:grid grid-cols-6 md:space-y-0 md:space-y-10 space-y-2 gap-x-4'>
+                <div className='md:grid grid-cols-6 md:space-y-0  space-y-2 gap-x-4'>
                     <div style={{ background: "#f0f0f0" }} className='col-span-4 relative'>                        
                         <Image
                             src={collectionOne}
                             className='w-full'
                             alt="product"
                         />
-                        <Link href="/products" className='pl-4 py-3 inline flex space-x-1 items-center'>
+                        <Link prefetch href="/products" className='pl-4 py-3 flex space-x-1 items-center'>
                             <span className='md:text-base text-sm'> View collection </span>
                             <BsArrowRight />
                         </Link>
@@ -35,7 +35,7 @@ const Collection = () => {
                                     src={collectionTwo}
                                     alt="product collection"
                                 />
-                                <Link href="/products" className='pl-4 py-3 inline flex space-x-1 items-center'>
+                                <Link prefetch href="/products" className='pl-4 py-3 inline flex space-x-1 items-center'>
                                     <span className='md:text-base text-sm'> View collection </span>
                                     <BsArrowRight />
                                 </Link>
@@ -46,7 +46,7 @@ const Collection = () => {
                                     src={collectionThree}
                                     alt="product collection"
                                 />
-                                <Link href="/products" className='pl-4 py-3 inline flex space-x-1 items-center'>
+                                <Link prefetch href="/products" className='pl-4 py-3 inline flex space-x-1 items-center'>
                                     <span> View collection </span>
                                     <BsArrowRight />
                                 </Link>

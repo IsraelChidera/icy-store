@@ -12,7 +12,7 @@ const EmptyCart = () => {
                 </h3>
                 <p className='text-xs mt-2 space-x-2 text-center'>
                     <span style={{ color: "#8F8F8F" }}>
-                        <Link href="/">
+                        <Link prefetch href="/">
                             Home
                         </Link>
                     </span>
@@ -36,7 +36,7 @@ const EmptyCart = () => {
                 </p>
 
                 <div className='flex mt-6 text-sm  justify-center items-center'>
-                    <Link
+                    <Link prefetch
                         href="/"                        
                         className='bg-black px-6 py-2 text-white'
                     >

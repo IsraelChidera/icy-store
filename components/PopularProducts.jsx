@@ -122,7 +122,7 @@ const PopularProducts = () => {
                         <div className="flex justify-center text-center items-center">
                             <p className='text-xs md:text-sm'>
                                 There was an error loading the products. Return to{" "}
-                                <Link href="/" className="underline">
+                                <Link prefetch href="/" className="underline">
                                     home
                                 </Link>
                             </p>
@@ -132,7 +132,7 @@ const PopularProducts = () => {
 
                 {
                     collectionProducts?.products?.edges?.map((p, i) => (
-                        <Link href={`/product/details/${encodeURIComponent(p.node.id)}`} key={i}>
+                        <Link prefetch href={`/product/details/${encodeURIComponent(p.node.id)}`} key={i}>
                             <img
                                 src={p.node.images?.edges[0].node.url}
                                 alt="picture of a project"
